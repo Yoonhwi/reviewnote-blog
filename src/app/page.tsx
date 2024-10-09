@@ -1,7 +1,8 @@
 "use client";
-import userRequest from "@/app/request/user";
 import Image from "next/image";
 import Button from "./components/button";
+import Link from "next/link";
+import { PageRoutes } from "./constants/routes";
 
 export default function Home() {
   return (
@@ -24,8 +25,9 @@ export default function Home() {
             .
           </li>
           <li>Save and see your changes instantly.</li>
-
-          <Button variant="primary">Add User</Button>
+          <Button variant="primary">
+            <Link href={PageRoutes.Login}>login Page</Link>
+          </Button>
         </ol>
       </main>
     </div>

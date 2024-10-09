@@ -15,9 +15,36 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  userId    String
+  id        Int       @id @default(autoincrement())
+  userId    String    @unique
   password  String
-  createdAt DateTime @default(now())
+  profile   String
+  role      String
+  nickname  String    @unique
+  createdAt DateTime  @default(now())
+  posts     Post[]    @relation("UserPosts")
+  comments  Comment[] @relation("UserComments")
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String
+  userId    Int
+  createdAt DateTime  @default(now())
+  user      User      @relation("UserPosts", fields: [userId], references: [id], onDelete: Cascade)
+  comments  Comment[] @relation("PostComments")
+}
+
+model Comment {
+  id        Int       @id @default(autoincrement())
+  content   String
+  postId    Int
+  userId    Int
+  parentId  Int?
+  createdAt DateTime  @default(now())
+  post      Post      @relation("PostComments", fields: [postId], references: [id], onDelete: Cascade)
+  user      User      @relation("UserComments", fields: [userId], references: [id], onDelete: Cascade)
+  parent    Comment?  @relation("ParentComment", fields: [parentId], references: [id], onDelete: Cascade)
+  children  Comment[] @relation("ParentComment")
 }
