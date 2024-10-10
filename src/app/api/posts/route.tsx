@@ -6,8 +6,8 @@ const client = new PrismaClient();
 
 export async function GET(req: NextApiRequest) {
   try {
-    const users = await client.user.findMany();
-    return NextResponse.json({ users }, { status: 200 });
+    const posts = await client.post.findMany();
+    return NextResponse.json({ posts }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 });
   }
@@ -16,13 +16,13 @@ export async function GET(req: NextApiRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    await client.user.create({
+    await client.post.create({
       data: body,
     });
-    return NextResponse.json({ message: "user created" }, { status: 201 });
+    return NextResponse.json({ message: "post created" }, { status: 201 });
   } catch (err) {
     return NextResponse.json(
-      { message: "Failed to create user", error: err },
+      { message: "Failed to create post", error: err },
       { status: 500 }
     );
   }

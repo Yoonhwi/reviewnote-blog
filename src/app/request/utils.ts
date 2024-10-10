@@ -55,6 +55,7 @@ export const api: Api = {
     const response = await fetch(url, {
       method: "DELETE",
     });
+
     if (!response.ok) {
       throw new Error("api error");
     }

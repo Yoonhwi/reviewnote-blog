@@ -8,10 +8,10 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const slug = params.slug;
-  const user = await client.user.findUnique({
+  const comment = await client.comment.findUnique({
     where: { id: Number(slug) },
   });
-  return NextResponse.json({ user }, { status: 200 });
+  return NextResponse.json({ comment }, { status: 200 });
 }
 
 export async function PUT(
@@ -20,11 +20,11 @@ export async function PUT(
 ) {
   const body = await request.json();
   const slug = params.slug;
-  const user = await client.user.update({
+  const comment = await client.comment.update({
     where: { id: Number(slug) },
     data: { ...body },
   });
-  return NextResponse.json({ user }, { status: 200 });
+  return NextResponse.json({ comment }, { status: 200 });
 }
 
 export async function DELETE(
@@ -33,16 +33,16 @@ export async function DELETE(
 ) {
   const slug = params.slug;
 
-  const user = await client.user.findUnique({
+  const comment = await client.comment.findUnique({
     where: { id: Number(slug) },
   });
 
-  if (!user) {
-    return new NextResponse("User not found", { status: 404 });
+  if (!comment) {
+    return new NextResponse("Comment not found", { status: 404 });
   }
 
-  await client.user.delete({
+  await client.comment.delete({
     where: { id: Number(slug) },
   });
-  return new NextResponse(`${slug} user deleted`, { status: 200 });
+  return new NextResponse(`${slug} comment deleted`, { status: 200 });
 }
