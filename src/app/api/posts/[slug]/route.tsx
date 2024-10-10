@@ -3,10 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 const client = new PrismaClient();
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { slug: string } }
-) {
+export async function GET({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const post = await client.post.findUnique({
     where: { id: Number(slug) },
@@ -27,10 +24,7 @@ export async function PUT(
   return NextResponse.json({ post }, { status: 200 });
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { slug: string } }
-) {
+export async function DELETE({ params }: { params: { slug: string } }) {
   const slug = params.slug;
 
   const post = await client.post.findUnique({
@@ -44,5 +38,5 @@ export async function DELETE(
   await client.post.delete({
     where: { id: Number(slug) },
   });
-  return new NextResponse(`${slug} post deleted`, { status: 200 });
+  return new NextResponse(`${slug} Post deleted`, { status: 200 });
 }

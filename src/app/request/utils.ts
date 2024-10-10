@@ -6,6 +6,7 @@ type Api = {
   post: <T>(url: string, params?: object) => Promise<T>;
   put: <T>(url: string, params?: object) => Promise<T>;
   delete: <T>(url: string) => Promise<T>;
+  upload: <T>(url: string, formData: FormData) => Promise<T>;
 };
 
 export const toUrl = (path: ApiRoutes | PageRoutes, params?: object) =>
@@ -13,7 +14,6 @@ export const toUrl = (path: ApiRoutes | PageRoutes, params?: object) =>
 
 export const api: Api = {
   get: async (url) => {
-    console.log(url);
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("api error");
@@ -22,7 +22,6 @@ export const api: Api = {
   },
 
   post: async (url, params) => {
-    console.log(url);
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -30,7 +29,6 @@ export const api: Api = {
       },
       body: JSON.stringify(params),
     });
-    console.log(response);
     if (!response.ok) {
       throw new Error("api error");
     }
@@ -55,7 +53,17 @@ export const api: Api = {
     const response = await fetch(url, {
       method: "DELETE",
     });
+    if (!response.ok) {
+      throw new Error("api error");
+    }
+    return response.json();
+  },
 
+  upload: async (url, formData) => {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
     if (!response.ok) {
       throw new Error("api error");
     }

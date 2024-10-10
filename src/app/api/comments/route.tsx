@@ -1,10 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 const client = new PrismaClient();
 
-export async function GET(req: NextApiRequest) {
+export async function GET() {
   try {
     const comments = await client.comment.findMany();
     return NextResponse.json({ comments }, { status: 200 });
@@ -19,7 +18,7 @@ export async function POST(req: NextRequest) {
     await client.comment.create({
       data: body,
     });
-    return NextResponse.json({ message: "comment created" }, { status: 201 });
+    return NextResponse.json({ message: "Comment created" }, { status: 201 });
   } catch (err) {
     return NextResponse.json(
       { message: "Failed to create comment", error: err },

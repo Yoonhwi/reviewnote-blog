@@ -18,7 +18,6 @@ const getUsers = async () => {
 };
 
 const getUser = async (id: string) => {
-  console.log("url:", toUrl(ApiRoutes.User, { id }));
   return api.get(toUrl(ApiRoutes.User, { id }));
 };
 

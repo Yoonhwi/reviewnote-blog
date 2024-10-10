@@ -5,6 +5,7 @@ export enum ApiRoutes {
   Post = "/api/posts/:id",
   Comments = "/api/comments",
   Comment = "/api/comments/:id",
+  Storage = "/api/storage",
 }
 
 export enum PageRoutes {

@@ -7,7 +7,14 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ className, variant = "outline", ...rest }: ButtonProps) => {
   return (
-    <button className={twMerge(getBgColor(variant), className)} {...rest} />
+    <button
+      className={twMerge(
+        getBgColor(variant),
+        className,
+        "p-2 border-red-100 border-2 rounded-md"
+      )}
+      {...rest}
+    />
   );
 };
 
