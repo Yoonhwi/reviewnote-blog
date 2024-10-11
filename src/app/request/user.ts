@@ -29,6 +29,17 @@ const deleteUser = async (id: string) => {
   return api.delete(toUrl(ApiRoutes.User, { id }));
 };
 
-const userRequest = { addUser, getUsers, getUser, updateUser, deleteUser };
+const getMe = async () => {
+  return api.get(toUrl(ApiRoutes.Me));
+};
+
+const userRequest = {
+  addUser,
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
+  getMe,
+};
 
 export default userRequest;
