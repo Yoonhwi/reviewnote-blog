@@ -20,6 +20,9 @@ export async function POST(
   { params }: { params: { slug: string } }
 ) {
   console.log(params.slug);
+  console.log("header", req.headers);
+  const userId = req.headers.get("current-user-id");
+  console.log("user", userId);
   try {
     const body = await req.json();
     await client.comment.create({

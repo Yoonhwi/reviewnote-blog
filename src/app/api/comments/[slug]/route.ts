@@ -24,8 +24,13 @@ export async function PUT(
   return NextResponse.json({ comment }, { status: 200 });
 }
 
-export async function DELETE({ params }: { params: { slug: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   const slug = params.slug;
+  const userId = req.headers.get("current-user-id");
+  console.log(userId);
 
   const comment = await client.comment.findUnique({
     where: { id: Number(slug) },

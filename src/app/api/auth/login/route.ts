@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 import { compare } from "bcrypt";
+import { NextRequest, NextResponse } from "next/server";
+import { generateToken } from "../../utils";
 
 export interface Login {
   userId: string;
@@ -50,11 +50,4 @@ export async function POST(req: NextRequest) {
   response.cookies.set("access-token", acessToken);
   response.cookies.set("refresh-token", refreshToken);
   return response;
-}
-
-function generateToken(payload: object, expiresIn: string) {
-  const token = jwt.sign(payload, process.env.JWT_SECRET!, {
-    expiresIn,
-  });
-  return token;
 }

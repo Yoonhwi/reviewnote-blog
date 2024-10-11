@@ -1,35 +1,18 @@
 "use client";
-import Image from "next/image";
-import Button from "./components/button";
-import Link from "next/link";
-import { PageRoutes } from "./constants/routes";
+
+import RoundCard from "./home/round-card";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-          <Button variant="primary">
-            <Link href={PageRoutes.Login}>login Page</Link>
-          </Button>
-        </ol>
-      </main>
+    <div className="h-screen flex flex-col">
+      <section className="flex-1 flex items-center justify-center bg-stone-600"></section>
+      <section className="flex-1 flex items-center justify-center bg-stone-300">
+        <div className="flex gap-12">
+          <RoundCard />
+          <div className="w-40 h-40 rounded-full bg-white shadow-xl border-solid border-stone-200 border-2 flex items-center justify-center"></div>
+          <div className="w-40 h-40 rounded-full bg-white shadow-xl border-solid border-stone-200 border-2 flex items-center justify-center"></div>
+        </div>
+      </section>
     </div>
   );
 }
