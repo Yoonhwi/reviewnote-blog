@@ -1,25 +1,42 @@
+import { jwtVerify, SignJWT } from "jose";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { ApiRoutes } from "./app/constants/routes";
 import { match } from "path-to-regexp";
-import jwt from "jsonwebtoken";
+import { ApiRoutes, PageRoutes } from "./app/constants/routes";
 
 const isProtectedPages = [
   { url: ApiRoutes.Posts, methods: ["POST", "PUT", "DELETE"] },
+  { url: ApiRoutes.Me, methods: ["GET"] },
 ];
 
+const errorMessages = {
+  emptyRefresh: "empty refresh-token",
+  expiredRefresh: "expired refresh-token",
+};
+
 export function middleware(request: NextRequest) {
-  // 토큰 검증
   try {
-    authenticator(request);
+    const response = authenticator(request);
+    if (response) {
+      return response;
+    }
   } catch (error) {
+    if (error instanceof Error) {
+      if (
+        error.message === errorMessages.emptyRefresh ||
+        error.message === errorMessages.expiredRefresh
+      ) {
+        const loginUrl = new URL(PageRoutes.Login, request.url);
+        return NextResponse.redirect(loginUrl);
+      }
+    }
     return NextResponse.json({ message: error }, { status: 401 });
   }
 
   return NextResponse.next();
 }
 
-function authenticator(request: NextRequest) {
+async function authenticator(request: NextRequest) {
   const url = new URL(request.url);
   if (
     isProtectedPages.some(
@@ -27,22 +44,60 @@ function authenticator(request: NextRequest) {
         match(page.url)(url.pathname) && page.methods.includes(request.method)
     )
   ) {
-    console.log("authenticating...");
+    console.log("protected page");
     const accessToken = request.cookies.get("access-token");
     const refreshToken = request.cookies.get("refresh-token");
 
     if (!accessToken?.value) {
-      throw new Error("empty access-token");
-    }
+      // refreshToken이 있는지 확인
+      if (!refreshToken?.value) {
+        throw new Error(errorMessages.emptyRefresh);
+      }
 
-    // jwt 검증
-    try {
-      const verify = jwt.verify(accessToken.value, process.env.JWT_SECRET!);
-    } catch (error) {
-      //여기는 accesstoken이 존재하지만, 만료 됬을때, refresh token을 토대로 새로운 access token을 발급해주는 로직
-      //refresh token이 존재하지 않을때
-      //둘다 재발급 해야되기떄문에 다시 로그인 해야함.
-      throw new Error("expired access-token");
+      // refreshToken 검증
+      try {
+        const newAccessToken = await generateAccessToken(refreshToken.value);
+        const response = NextResponse.next();
+        response.cookies.set("access-token", newAccessToken);
+        return response;
+      } catch (error) {
+        throw new Error(errorMessages.expiredRefresh);
+      }
+    } else {
+      // accessToken이 있는 경우 검증
+      try {
+        await jwtVerify(
+          new TextEncoder().encode(accessToken.value),
+          new TextEncoder().encode(process.env.JWT_SECRET!)
+        );
+      } catch (error) {
+        if (!refreshToken?.value) {
+          throw new Error(errorMessages.emptyRefresh);
+        }
+        // refreshToken 검증
+        try {
+          const newAccessToken = await generateAccessToken(refreshToken.value);
+          const response = NextResponse.next();
+          response.cookies.set("access-token", newAccessToken);
+          return response;
+        } catch (error) {
+          throw new Error(errorMessages.expiredRefresh);
+        }
+      }
     }
   }
+}
+
+async function generateAccessToken(refreshToken: string) {
+  const { payload: user } = await jwtVerify(
+    new TextEncoder().encode(refreshToken),
+    new TextEncoder().encode(process.env.JWT_SECRET!)
+  );
+
+  const newAccessToken = await new SignJWT({ user })
+    .setProtectedHeader({ alg: "HS256" })
+    .setExpirationTime("1h")
+    .sign(new TextEncoder().encode(process.env.JWT_SECRET!));
+
+  return newAccessToken;
 }

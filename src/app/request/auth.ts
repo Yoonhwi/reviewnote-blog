@@ -3,7 +3,7 @@ import { api, toUrl } from "./utils";
 
 export const login = async () => {
   return api.post(toUrl(ApiRoutes.AuthLogin), {
-    userId: "test1",
+    userId: "test3",
     password: "test",
   });
 };

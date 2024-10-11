@@ -10,11 +10,11 @@ const ApiUser = () => {
         variant="outline"
         onClick={() => {
           userRequest.addUser({
-            userId: "test2",
+            userId: "test3",
             password: "test",
-            profile: "test",
+            profile: process.env.NEXT_PUBLIC_NONE_USER!,
             role: "test",
-            nickname: "test2",
+            nickname: "test3",
           });
         }}
       >

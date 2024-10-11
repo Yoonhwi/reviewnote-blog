@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
+import { compare } from "bcrypt";
 
 export interface Login {
   userId: string;
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "User not found" }, { status: 404 });
   }
   // 나중에 암호화로 수정해야함
-  if (user.password !== body.password) {
+  if (!(await compare(body.password, user.password))) {
     return NextResponse.json({ message: "Invalid password" }, { status: 401 });
   }
 
@@ -30,13 +31,17 @@ export async function POST(req: NextRequest) {
       userId: user.userId,
       nickname: user.nickname,
       role: user.role,
+      createdAt: user.createdAt,
     },
-    "5s"
+    "1h"
   );
 
   const refreshToken = generateToken(
     {
       userId: user.userId,
+      nickname: user.nickname,
+      role: user.role,
+      createdAt: user.createdAt,
     },
     "7d"
   );
