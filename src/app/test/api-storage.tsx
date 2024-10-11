@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { addImage } from "../request/storage";
+import Image from "next/image";
 
 const ApiStorage = () => {
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -23,7 +24,7 @@ const ApiStorage = () => {
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
-      {imgSrc && <img src={imgSrc} alt="img" />}
+      {imgSrc && <Image src={imgSrc} width={200} height={200} alt="img" />}
     </div>
   );
 };

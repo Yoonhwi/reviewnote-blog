@@ -1,4 +1,5 @@
 export enum ApiRoutes {
+  AuthLogin = "/api/auth/login",
   Users = "/api/users",
   User = "/api/users/:id",
   Posts = "/api/posts",

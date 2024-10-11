@@ -1,7 +1,7 @@
 import { ApiRoutes } from "@/app/constants/routes";
 import { api, toUrl } from "./utils";
 
-interface AddUserParams {
+interface UserAdd {
   userId: string;
   password: string;
   profile: string;
@@ -9,7 +9,7 @@ interface AddUserParams {
   nickname: string;
 }
 
-const addUser = async (params: AddUserParams) => {
+const addUser = async (params: UserAdd) => {
   return api.post(ApiRoutes.Users, params);
 };
 
@@ -21,7 +21,7 @@ const getUser = async (id: string) => {
   return api.get(toUrl(ApiRoutes.User, { id }));
 };
 
-const updateUser = async (id: string, params: AddUserParams) => {
+const updateUser = async (id: string, params: UserAdd) => {
   return api.put(toUrl(ApiRoutes.User, { id }), params);
 };
 

@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -27,8 +26,10 @@ export async function POST(req: NextRequest) {
         contentType,
       });
 
+    const loadUrl = `https://${process.env.SUPABASE_DOMAIN}${process.env.SUPABASE_STORAGE_URL}`;
+
     return NextResponse.json(
-      { data: `${process.env.LOAD_URL!}${data?.path}` },
+      { data: `${loadUrl}${data?.path}` },
       { status: 200 }
     );
   } catch (err) {

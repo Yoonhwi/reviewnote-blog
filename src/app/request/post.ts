@@ -1,13 +1,8 @@
 import { ApiRoutes } from "@/app/constants/routes";
 import { api, toUrl } from "./utils";
+import { PostAdd } from "../api/posts/route";
 
-interface AddPostParams {
-  title: string;
-  content: string;
-  userId: number;
-}
-
-const addPost = async (params: AddPostParams) => {
+const addPost = async (params: PostAdd) => {
   return api.post(ApiRoutes.Posts, params);
 };
 
@@ -19,7 +14,7 @@ const getPost = async (id: string) => {
   return api.get(toUrl(ApiRoutes.Post, { id }));
 };
 
-const updatePost = async (id: string, params: AddPostParams) => {
+const updatePost = async (id: string, params: PostAdd) => {
   return api.put(toUrl(ApiRoutes.Post, { id }), params);
 };
 
