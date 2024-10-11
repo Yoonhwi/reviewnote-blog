@@ -5,8 +5,11 @@ import { match } from "path-to-regexp";
 import { ApiRoutes, PageRoutes } from "./app/constants/routes";
 
 const isProtectedPages = [
-  { url: ApiRoutes.Posts, methods: ["POST", "PUT", "DELETE"] },
+  { url: ApiRoutes.Posts, methods: ["POST"] },
+  { url: ApiRoutes.Post, methods: ["PUT", "DELETE"] },
   { url: ApiRoutes.Me, methods: ["GET"] },
+  { url: ApiRoutes.Comments, methods: ["POST"] },
+  { url: ApiRoutes.Comment, methods: ["PUT", "DELETE"] },
 ];
 
 const errorMessages = {
@@ -14,9 +17,9 @@ const errorMessages = {
   expiredRefresh: "expired refresh-token",
 };
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   try {
-    const response = authenticator(request);
+    const response = await authenticator(request);
     if (response) {
       return response;
     }
@@ -51,6 +54,7 @@ async function authenticator(request: NextRequest) {
     if (!accessToken?.value) {
       // refreshToken이 있는지 확인
       if (!refreshToken?.value) {
+        console.log("hit4");
         throw new Error(errorMessages.emptyRefresh);
       }
 
@@ -59,18 +63,22 @@ async function authenticator(request: NextRequest) {
         const newAccessToken = await generateAccessToken(refreshToken.value);
         const response = NextResponse.next();
         response.cookies.set("access-token", newAccessToken);
+        console.log("hit2");
         return response;
       } catch (error) {
+        console.log("hit5");
         throw new Error(errorMessages.expiredRefresh);
       }
     } else {
       // accessToken이 있는 경우 검증
       try {
+        console.log("hit6");
         await jwtVerify(
           new TextEncoder().encode(accessToken.value),
           new TextEncoder().encode(process.env.JWT_SECRET!)
         );
       } catch (error) {
+        console.log("hit7");
         if (!refreshToken?.value) {
           throw new Error(errorMessages.emptyRefresh);
         }
@@ -79,6 +87,7 @@ async function authenticator(request: NextRequest) {
           const newAccessToken = await generateAccessToken(refreshToken.value);
           const response = NextResponse.next();
           response.cookies.set("access-token", newAccessToken);
+          console.log("hit1");
           return response;
         } catch (error) {
           throw new Error(errorMessages.expiredRefresh);

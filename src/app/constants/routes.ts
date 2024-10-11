@@ -7,8 +7,8 @@ export enum ApiRoutes {
   User = "/api/users/:id",
   Posts = "/api/posts",
   Post = "/api/posts/:id",
-  Comments = "/api/comments",
-  Comment = "/api/comments/:id",
+  Comments = "/api/posts/:id/comments",
+  Comment = "/api/posts/:id/comments/:id",
   Storage = "/api/storage",
 }
 

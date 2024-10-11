@@ -40,6 +40,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  console.log("post post");
   try {
     const body = await req.json();
     try {

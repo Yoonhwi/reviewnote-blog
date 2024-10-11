@@ -4,15 +4,14 @@ import { api, toUrl } from "./utils";
 interface CommentAdd {
   content: string;
   userId: number;
-  postId: number;
 }
 
-const addComment = async (params: CommentAdd) => {
-  return api.post(ApiRoutes.Comments, params);
+const addComment = async (params: CommentAdd, id: string) => {
+  return api.post(toUrl(ApiRoutes.Comments, { id }), params);
 };
 
-const getComments = async () => {
-  return api.get(ApiRoutes.Comments);
+const getComments = async (id: string) => {
+  return api.get(toUrl(ApiRoutes.Comments, { id }));
 };
 
 const getComment = async (id: string) => {

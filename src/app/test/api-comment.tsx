@@ -9,11 +9,13 @@ const ApiComment = () => {
       <span>comment api</span>
       <Button
         onClick={() => {
-          commentRequest.addComment({
-            content: "test",
-            userId: 8,
-            postId: 4,
-          });
+          commentRequest.addComment(
+            {
+              content: "test",
+              userId: 13,
+            },
+            "4"
+          );
         }}
       >
         Post Comment
