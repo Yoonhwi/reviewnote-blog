@@ -18,4 +18,5 @@ export enum PageRoutes {
   Join = "/auth/join",
   Comments = "/comments",
   Board = "/board",
+  Post = "/board/post",
 }

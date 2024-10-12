@@ -1,5 +1,14 @@
+import { BaseLayout } from "@/app/layouts";
+import JoinCard from "./join-card";
+
 const Join = () => {
-  return <div className="flex flex-row gap-4">join page</div>;
+  return (
+    <BaseLayout>
+      <div className="h-[680px] flex justify-center items-center">
+        <JoinCard />
+      </div>
+    </BaseLayout>
+  );
 };
 
 export default Join;

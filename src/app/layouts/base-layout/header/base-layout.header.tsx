@@ -2,6 +2,8 @@
 import { useCallback, useEffect, useState } from "react";
 import LogoutStatusIcons from "./logout-status.icons";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { PageRoutes } from "@/app/constants/routes";
 
 const BaseLayoutHeader = () => {
   const [isTop, setIsTop] = useState(false);
@@ -27,7 +29,9 @@ const BaseLayoutHeader = () => {
       )}
     >
       <div className="w-[1280px] flex justify-between items-center">
-        <h1>LOGO</h1>
+        <Link href={PageRoutes.Home}>
+          <h1>LOGO</h1>
+        </Link>
         <nav>
           {/* <LoginStuatsIcons /> */}
           <LogoutStatusIcons />
