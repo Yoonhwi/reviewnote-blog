@@ -32,9 +32,9 @@ const PostCard = ({ post }: PostCardProps) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 p-2">
+      <div className="flex flex-col gap-2 p-4 overflow-hidden">
         <h1 className="font-bold">{post.title}</h1>
-        <p className="text-sm h-14 w-[300px]">
+        <p className="text-sm h-14 overflow-hidden">
           {truncateText(post.content, 80)}
         </p>
       </div>

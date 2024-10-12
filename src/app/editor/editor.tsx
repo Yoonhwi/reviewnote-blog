@@ -2,6 +2,7 @@
 import { EditorState } from "draft-js";
 import { useState } from "react";
 import EditorWrapper from "./editor-wrapper";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const Editor = () => {
   const [editorState, setEditorState] = useState<EditorState>(
@@ -22,9 +23,12 @@ const Editor = () => {
       onEditorStateChange={onEditorStateChange}
       editorStyle={{
         height: "400px",
-        width: "100%",
-        border: "3px solid lightgray",
+        width: "w-full",
+        border: "1px solid lightgray",
         padding: "20px",
+      }}
+      toolbarStyle={{
+        width: "w-full",
       }}
     />
   );

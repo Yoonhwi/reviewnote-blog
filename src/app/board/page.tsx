@@ -5,7 +5,7 @@ import { dummyPosts } from "../dummy/post";
 import Link from "next/link";
 import { PageRoutes } from "../constants/routes";
 
-const Board = () => {
+const BoardPage = () => {
   return (
     <BaseLayout>
       <div className="flex flex-col gap-4 py-16">
@@ -32,4 +32,4 @@ const Board = () => {
   );
 };
 
-export default Board;
+export default BoardPage;

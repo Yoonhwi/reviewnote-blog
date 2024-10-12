@@ -1,7 +1,7 @@
 import { BaseLayout } from "@/app/layouts";
 import JoinCard from "./join-card";
 
-const Join = () => {
+const JoinPage = () => {
   return (
     <BaseLayout>
       <div className="h-[680px] flex justify-center items-center">
@@ -11,4 +11,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default JoinPage;

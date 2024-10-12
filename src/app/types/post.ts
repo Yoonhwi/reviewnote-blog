@@ -14,8 +14,8 @@ export interface PostResponseType {
   id: number;
   title: string;
   content: string;
-  userId: number;
-  createdAt: Date;
+  userId: string;
+  createdAt: string;
   mainImage: string;
   user: UserResponseType;
 }

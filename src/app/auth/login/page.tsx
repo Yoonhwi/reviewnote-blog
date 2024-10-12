@@ -1,7 +1,7 @@
 import { BaseLayout } from "@/app/layouts";
 import LoginCard from "./login-card";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <BaseLayout>
       <div className="h-[800px] flex justify-center items-center">
@@ -11,4 +11,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

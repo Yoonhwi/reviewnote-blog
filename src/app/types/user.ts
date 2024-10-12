@@ -4,5 +4,5 @@ export interface UserResponseType {
   profile: string;
   role: string;
   nickname: string;
-  createdAt: Date;
+  createdAt: string;
 }
