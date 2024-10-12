@@ -1,21 +1,21 @@
-import { Post } from "@/app/types";
+import { PostResponseType } from "@/app/types";
 
-export const dummyPosts: Post[] = [
+export const dummyPosts: PostResponseType[] = [
   {
     id: 1,
-    title: "게시글 제목",
+    title: "게시글 제목 ~ test ~ ",
     content:
-      "게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test",
-    createdAt: String(new Date()),
+      "게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test",
+    createdAt: "2021-09-20T00:00:00",
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
-      nickname: "user_nickname",
-      createdAt: new Date(),
+      nickname: "윤승휘",
+      createdAt: String(new Date()),
     },
   },
   {
@@ -24,14 +24,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
   {
@@ -40,14 +40,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
   {
@@ -56,14 +56,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
   {
@@ -72,14 +72,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
   {
@@ -88,14 +88,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
   {
@@ -104,14 +104,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
   {
@@ -120,14 +120,14 @@ export const dummyPosts: Post[] = [
     content: "게시글 내용 ~",
     createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
-    userId: 1,
+    userId: "test",
     user: {
       id: 1,
       userId: "user_id",
       profile: process.env.NEXT_PUBLIC_NONE_USER!,
       role: "user",
       nickname: "user_nickname",
-      createdAt: new Date(),
+      createdAt: String(new Date()),
     },
   },
 ];

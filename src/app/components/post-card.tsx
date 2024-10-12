@@ -1,9 +1,9 @@
-import { Post } from "@/app/types";
+import { PostResponseType } from "@/app/types";
 import Image from "next/image";
 import { formatISO } from "../utils/date";
 import { truncateText } from "../utils/text";
 interface PostCardProps {
-  post: Post;
+  post: PostResponseType;
 }
 const PostCard = ({ post }: PostCardProps) => {
   const createdAt = formatISO(post.createdAt);

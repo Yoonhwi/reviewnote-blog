@@ -1,6 +1,5 @@
 import { PostResponseType } from "@/app/types";
-import { formatISO } from "@/app/utils/date";
-import { truncateText } from "@/app/utils/text";
+import { truncateText, formatISO } from "@/app/utils";
 
 interface TextPostCardProps {
   post: PostResponseType;
