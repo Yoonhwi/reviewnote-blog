@@ -10,7 +10,7 @@ const Home = () => {
     <BaseLayout>
       <div className="flex flex-col gap-2 items-center">
         <div className="p-6 flex flex-col gap-6 items-center justify-center">
-          <h1 className="text-3xl font-bold">Welcome to Blog</h1>
+          <h1 className="text-3xl font-bold">Welcome to</h1>
 
           <div className="flex w-full max-w-sm items-center gap-2">
             <Input type="search" placeholder="Seach" className="w-[280px]" />

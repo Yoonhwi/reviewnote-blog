@@ -3,7 +3,7 @@
 import { Stacks } from "@/app/constants/stacks";
 const BaseLayoutFooter = () => {
   return (
-    <div className="w-full flex justify-center bg-slate-50 py-12 font-[family-name:var(--font-geist-sans)]">
+    <div className="w-full flex justify-center bg-slate-50 py-12">
       <div className={"w-[960px] flex flex-col gap-6"}>
         <h1 className="font-bold text-3xl">Stacks</h1>
         <div className="flex w-full">

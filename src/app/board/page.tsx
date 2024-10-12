@@ -1,9 +1,11 @@
 import { BaseLayout } from "../layouts";
 
 const Board = () => {
-  <BaseLayout>
-    <div>Board Page</div>
-  </BaseLayout>;
+  return (
+    <BaseLayout>
+      <div>Board Page 123</div>
+    </BaseLayout>
+  );
 };
 
 export default Board;

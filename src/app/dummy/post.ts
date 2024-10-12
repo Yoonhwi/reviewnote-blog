@@ -4,8 +4,9 @@ export const dummyPosts: Post[] = [
   {
     id: 1,
     title: "게시글 제목",
-    content: "게시글 내용 ~",
-    createdAt: new Date(),
+    content:
+      "게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test게시글 내용 ~ test",
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -21,7 +22,7 @@ export const dummyPosts: Post[] = [
     id: 2,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -37,7 +38,7 @@ export const dummyPosts: Post[] = [
     id: 3,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -53,7 +54,7 @@ export const dummyPosts: Post[] = [
     id: 4,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -69,7 +70,7 @@ export const dummyPosts: Post[] = [
     id: 5,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -85,7 +86,7 @@ export const dummyPosts: Post[] = [
     id: 6,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -101,7 +102,7 @@ export const dummyPosts: Post[] = [
     id: 7,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {
@@ -117,7 +118,7 @@ export const dummyPosts: Post[] = [
     id: 8,
     title: "게시글 제목",
     content: "게시글 내용 ~",
-    createdAt: new Date(),
+    createdAt: String(new Date()),
     mainImage: process.env.NEXT_PUBLIC_NONE_IMAGE!,
     userId: 1,
     user: {

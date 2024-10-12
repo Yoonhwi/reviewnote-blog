@@ -5,7 +5,7 @@ export interface Post {
   title: string;
   content: string;
   userId: number;
-  createdAt: Date;
+  createdAt: string;
   mainImage: string;
   user: UserResponseType;
 }
