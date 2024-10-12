@@ -1,18 +1,33 @@
-"use client";
+import { PostCard } from "@/app/components";
+import { dummyPosts } from "./dummy/post";
+import { BaseLayout } from "./layouts";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { FaSearch } from "react-icons/fa";
 
-import RoundCard from "./home/round-card";
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className="h-screen flex flex-col">
-      <section className="flex-1 flex items-center justify-center bg-stone-600"></section>
-      <section className="flex-1 flex items-center justify-center bg-stone-300">
-        <div className="flex gap-12">
-          <RoundCard />
-          <div className="w-40 h-40 rounded-full bg-white shadow-xl border-solid border-stone-200 border-2 flex items-center justify-center"></div>
-          <div className="w-40 h-40 rounded-full bg-white shadow-xl border-solid border-stone-200 border-2 flex items-center justify-center"></div>
+    <BaseLayout>
+      <div className="flex flex-col gap-2 items-center">
+        <div className="p-6 flex flex-col gap-6 items-center justify-center">
+          <h1 className="text-3xl font-bold">Welcome to Blog</h1>
+
+          <div className="flex w-full max-w-sm items-center gap-2">
+            <Input type="search" placeholder="Seach" className="w-[280px]" />
+            <Button type="submit" className="p-3">
+              <FaSearch />
+            </Button>
+          </div>
         </div>
-      </section>
-    </div>
+
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-y-6 gap-x-4">
+          {dummyPosts.map((post) => {
+            return <PostCard post={post} key={post.id} />;
+          })}
+        </div>
+      </div>
+    </BaseLayout>
   );
-}
+};
+
+export default Home;

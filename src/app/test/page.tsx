@@ -1,4 +1,4 @@
-import BaseLayout from "../layouts/base-layout";
+import { BaseLayout } from "@/app/layouts";
 import ApiAuth from "./api-auth";
 import ApiComment from "./api-comment";
 import ApiPost from "./api-post";

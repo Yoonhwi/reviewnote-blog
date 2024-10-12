@@ -9,6 +9,13 @@ interface UserAdd {
   nickname: string;
 }
 
+interface User {
+  userId: string;
+  profile: string;
+  role: string;
+  nickname: string;
+}
+
 const addUser = async (params: UserAdd) => {
   return api.post(ApiRoutes.Users, params);
 };
@@ -30,7 +37,7 @@ const deleteUser = async (id: string) => {
 };
 
 const getMe = async () => {
-  return api.get(toUrl(ApiRoutes.Me));
+  return api.get<User>(toUrl(ApiRoutes.Me));
 };
 
 const userRequest = {

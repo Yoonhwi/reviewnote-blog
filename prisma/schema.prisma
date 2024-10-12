@@ -31,6 +31,7 @@ model Post {
   title     String
   content   String
   userId    Int
+  mainImg   String
   createdAt DateTime  @default(now())
   user      User      @relation("UserPosts", fields: [userId], references: [id], onDelete: Cascade)
   comments  Comment[] @relation("PostComments")
