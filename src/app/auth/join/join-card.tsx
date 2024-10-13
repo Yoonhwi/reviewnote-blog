@@ -27,7 +27,7 @@ const defaultUserValues: AddUserFormType = {
   password: "",
   passwordCheck: "",
   role: "user",
-  profile: "",
+  profile: process.env.NEXT_PUBLIC_NONE_USER!,
 };
 
 const JoinCard = () => {

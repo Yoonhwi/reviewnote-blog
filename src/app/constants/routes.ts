@@ -21,4 +21,5 @@ export enum PageRoutes {
   Comments = "/comments",
   Board = "/board",
   Post = "/board/post",
+  UserDetail = "/user/:id",
 }

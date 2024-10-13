@@ -16,17 +16,15 @@ export async function middleware(request: NextRequest) {
   try {
     // 액세스 토큰 검증
     const payload = await authenticator(request);
-    console.log("hit here", payload);
+
     // 검증 통과시, 헤더에 현재 사용자의 ID 추가
     if (payload) {
-      console.log("hit5");
       const user = await getUserFromTokenPayload(payload);
       const requestHeaders = new Headers(request.headers);
       requestHeaders.set("current-user-id", String(user.id));
       const response = NextResponse.next({
         request: { headers: requestHeaders },
       });
-      console.log("hit 1");
       return response;
     }
     // 검증 통과시 다음 미들웨어로 넘어가기
@@ -56,7 +54,6 @@ export async function middleware(request: NextRequest) {
         response.cookies.set("access-token", accessToken);
         return response;
       } catch (error) {
-        console.log("hit2");
         if (!(error instanceof Error)) {
           return NextResponse.json(
             { message: "unknown error" },
@@ -64,13 +61,13 @@ export async function middleware(request: NextRequest) {
           );
         }
         // 토큰 재발급 실패시 로그인 페이지로 리다이렉트
-        console.log("hit3");
+
         return NextResponse.json({ message: error.message }, { status: 401 });
       }
     }
 
     // 액세스 토큰이 있고, 만료에러가 아닌 다른 에러인 경우
-    console.log("hit4");
+
     return NextResponse.json({ message: error.message }, { status: 401 });
   }
 }

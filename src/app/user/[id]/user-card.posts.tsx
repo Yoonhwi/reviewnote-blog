@@ -17,7 +17,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 2,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -26,7 +26,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 3,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -35,7 +35,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 4,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -44,7 +44,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 5,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -53,7 +53,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 6,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -62,7 +62,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 7,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -71,7 +71,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 8,
       title: "title",
       content: "content",
       mainImage: "mainImage",
@@ -80,7 +80,7 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       user,
     },
     {
-      id: 1,
+      id: 9,
       title: "title",
       content:
         "컨텐츠 길이별 테스트중입니다. 컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.",

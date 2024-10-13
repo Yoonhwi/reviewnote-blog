@@ -9,7 +9,7 @@ import userRequest from "@/app/request/user";
 import LoginStuatsIcons from "./login-status.icons";
 
 const BaseLayoutHeader = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState(null);
   const [isTop, setIsTop] = useState(false);
 
   const scrollListener = useCallback(() => {
@@ -26,9 +26,9 @@ const BaseLayoutHeader = () => {
   useEffect(() => {
     userRequest.getMe().then((res: any) => {
       if (res.data) {
-        setIsLogin(true);
+        setUser(res.data);
       } else {
-        setIsLogin(false);
+        setUser(null);
       }
     });
   }, []);
@@ -46,7 +46,9 @@ const BaseLayoutHeader = () => {
         <Link href={PageRoutes.Home}>
           <h1>LOGO</h1>
         </Link>
-        <nav>{isLogin ? <LoginStuatsIcons /> : <LogoutStatusIcons />}</nav>
+        <nav>
+          {user ? <LoginStuatsIcons user={user} /> : <LogoutStatusIcons />}
+        </nav>
       </div>
     </div>
   );
