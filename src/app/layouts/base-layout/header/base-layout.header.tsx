@@ -1,11 +1,15 @@
 "use client";
+
 import { useCallback, useEffect, useState } from "react";
 import LogoutStatusIcons from "./logout-status.icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PageRoutes } from "@/app/constants/routes";
+import userRequest from "@/app/request/user";
+import LoginStuatsIcons from "./login-status.icons";
 
 const BaseLayoutHeader = () => {
+  const [isLogin, setIsLogin] = useState(false);
   const [isTop, setIsTop] = useState(false);
 
   const scrollListener = useCallback(() => {
@@ -18,6 +22,16 @@ const BaseLayoutHeader = () => {
       window.removeEventListener("scroll", () => scrollListener());
     };
   }, [scrollListener]);
+
+  useEffect(() => {
+    userRequest.getMe().then((res: any) => {
+      if (res.data) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    });
+  }, []);
 
   return (
     <div
@@ -32,10 +46,7 @@ const BaseLayoutHeader = () => {
         <Link href={PageRoutes.Home}>
           <h1>LOGO</h1>
         </Link>
-        <nav>
-          {/* <LoginStuatsIcons /> */}
-          <LogoutStatusIcons />
-        </nav>
+        <nav>{isLogin ? <LoginStuatsIcons /> : <LogoutStatusIcons />}</nav>
       </div>
     </div>
   );

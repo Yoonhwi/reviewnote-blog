@@ -29,7 +29,6 @@ export const api: Api = {
       },
       body: JSON.stringify(params),
     });
-    console.log("post response : ", response);
     if (!response.ok) {
       throw new Error("api error");
     }

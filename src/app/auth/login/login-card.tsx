@@ -15,27 +15,27 @@ const LoginCard = () => {
   return (
     <Card className="w-[480px] h-[420px] flex flex-col justify-center">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">Login</CardTitle>
+        <CardTitle className="text-2xl font-bold">로그인</CardTitle>
         <CardDescription>
-          Enter your email and password to login
+          로그인 아이디와 비밀번호를 입력해주세요.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label>Email</Label>
+            <Label>아이디</Label>
             <Input id="userId" type="text" required />
           </div>
           <div className="flex flex-col gap-2">
-            <Label>password</Label>
+            <Label>비밀번호</Label>
             <Input id="password" type="password" required />
           </div>
           <Button type="submit" className="w-full">
-            Login
+            로그인
           </Button>
           <Link href={PageRoutes.Join} passHref>
             <Button type="button" className="w-full">
-              Sign Up
+              회원가입
             </Button>
           </Link>
         </div>

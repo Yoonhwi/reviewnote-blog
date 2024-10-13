@@ -8,7 +8,6 @@ import { match } from "path-to-regexp";
 const isProtectedPages = [
   { url: ApiRoutes.Posts, methods: ["POST"] },
   { url: ApiRoutes.Post, methods: ["PUT", "DELETE"] },
-  { url: ApiRoutes.Me, methods: ["GET"] },
   { url: ApiRoutes.Comments, methods: ["POST"] },
   { url: ApiRoutes.Comment, methods: ["PUT", "DELETE"] },
 ];

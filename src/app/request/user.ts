@@ -17,7 +17,7 @@ interface User {
 }
 
 const addUser = async (params: UserAdd) => {
-  return api.post(ApiRoutes.Users, params);
+  return api.post<Response>(ApiRoutes.Users, params);
 };
 
 const getUsers = async () => {
@@ -37,7 +37,22 @@ const deleteUser = async (id: string) => {
 };
 
 const getMe = async () => {
-  return api.get<User>(toUrl(ApiRoutes.Me));
+  return api.get(toUrl(ApiRoutes.Me));
+};
+const checkIdExist = async (userId: string) => {
+  return api.post(toUrl(ApiRoutes.CheckId), { userId });
+};
+
+const checkNicknameExist = async (nickname: string) => {
+  return api.post(toUrl(ApiRoutes.CheckNickname), { nickname });
+};
+
+const userLogin = async (userId: string, password: string) => {
+  return api.post(toUrl(ApiRoutes.AuthLogin), { userId, password });
+};
+
+const userLogout = async () => {
+  return api.post(toUrl(ApiRoutes.AuthLogout));
 };
 
 const userRequest = {
@@ -47,6 +62,10 @@ const userRequest = {
   updateUser,
   deleteUser,
   getMe,
+  checkIdExist,
+  checkNicknameExist,
+  userLogin,
+  userLogout,
 };
 
 export default userRequest;

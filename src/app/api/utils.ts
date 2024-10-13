@@ -3,6 +3,7 @@ import { JWTPayload, jwtVerify } from "jose";
 import jwt from "jsonwebtoken";
 
 export interface GenerateTokenPayload {
+  id: number;
   userId: string;
   nickname: string;
   role: string;
@@ -20,6 +21,9 @@ export function generateToken(
 }
 
 export async function getUserFromTokenPayload(payload: JWTPayload) {
+  if (!("id" in payload)) {
+    throw new Error(errorMessages.invalidTokenPayload);
+  }
   if (!("userId" in payload)) {
     throw new Error(errorMessages.invalidTokenPayload);
   }
@@ -42,6 +46,9 @@ export async function getUserFromTokenPayload(payload: JWTPayload) {
     throw new Error(errorMessages.invalidTokenPayload);
   }
   if (typeof payload.createdAt !== "string") {
+    throw new Error(errorMessages.invalidTokenPayload);
+  }
+  if (typeof payload.id !== "number") {
     throw new Error(errorMessages.invalidTokenPayload);
   }
   return payload as unknown as GenerateTokenPayload;

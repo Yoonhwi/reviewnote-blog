@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
 
   const acessToken = generateToken(
     {
+      id: user.id,
       userId: user.userId,
       nickname: user.nickname,
       role: user.role,
@@ -38,6 +39,7 @@ export async function POST(req: NextRequest) {
 
   const refreshToken = generateToken(
     {
+      id: user.id,
       userId: user.userId,
       nickname: user.nickname,
       role: user.role,

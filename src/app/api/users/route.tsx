@@ -28,10 +28,27 @@ export async function POST(req: NextRequest) {
     const user = { ...body, password: hashedPassword };
 
     await client.user.create({
-      data: { ...body, password: hashedPassword },
+      data: user,
     });
+
     return NextResponse.json({ message: "User created" }, { status: 201 });
-  } catch (err) {
+  } catch (err: any) {
+    const errorTarget = err.meta.target[0];
+    if (errorTarget === "userId") {
+      return NextResponse.json(
+        {
+          message: "Failed to create user",
+          error: "User ID already exists",
+        },
+        { status: 409 }
+      );
+    } else if (errorTarget === "nickname") {
+      return NextResponse.json(
+        { message: "Failed to create user", error: "Nickname already exists" },
+        { status: 422 }
+      );
+    }
+
     return NextResponse.json(
       { message: "Failed to create user", error: err },
       { status: 500 }

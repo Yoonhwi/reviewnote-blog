@@ -1,5 +1,4 @@
 import { BaseLayout } from "@/app/layouts";
-import ApiAuth from "./api-auth";
 import ApiComment from "./api-comment";
 import ApiPost from "./api-post";
 import ApiStorage from "./api-storage";
@@ -13,7 +12,6 @@ const Test = () => {
         <ApiPost />
         <ApiComment />
         <ApiStorage />
-        <ApiAuth />
       </div>
     </BaseLayout>
   );
