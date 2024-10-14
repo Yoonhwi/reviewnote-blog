@@ -40,7 +40,7 @@ const BaseLayoutHeader = () => {
       )}
     >
       <div className="w-[1280px] flex justify-between items-center">
-        <Link href={PageRoutes.Home}>
+        <Link href={PageRoutes.Home} scroll={false}>
           <div className="flex gap-4 items-center">
             <Image
               src={"/images/logo.png"}
