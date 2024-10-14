@@ -4,7 +4,13 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: [process.env.SUPABASE_DOMAIN],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: process.env.SUPABASE_DOMAIN,
+        pathname: "**",
+      },
+    ],
   },
 };
 
