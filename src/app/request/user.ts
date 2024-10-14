@@ -15,7 +15,7 @@ interface ResponseUser {
 }
 
 const addUser = async (params: UserAdd) => {
-  return api.post<Response>(ApiRoutes.Users, params);
+  return api.post(ApiRoutes.Users, params);
 };
 
 const getUsers = async () => {

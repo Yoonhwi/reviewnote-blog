@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
     nickname: user.nickname,
     role: user.role,
     createdAt: user.createdAt,
+    profile: user.profile,
   };
 
   const acessToken = generateToken(userBody, "1h");
