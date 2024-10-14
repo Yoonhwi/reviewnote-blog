@@ -3,12 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 const supabase = createClient(process.env.PROJECT_URL!, process.env.ANON_KEY!);
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
