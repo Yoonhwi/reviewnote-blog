@@ -10,6 +10,7 @@ const isProtectedPages = [
   { url: ApiRoutes.Post, methods: ["PUT", "DELETE"] },
   { url: ApiRoutes.Comments, methods: ["POST"] },
   { url: ApiRoutes.Comment, methods: ["PUT", "DELETE"] },
+  { url: ApiRoutes.User, methods: ["PUT"] },
 ];
 
 export async function authenticator(

@@ -1,105 +1,58 @@
+"use client";
+
 import { Label } from "@/components/ui/label";
 import { UserCardProps } from "./user-card";
 import { CardDescription } from "@/components/ui/card";
-import { PostResponseType } from "@/app/types";
+import { GetPostsResponseType, PostResponseType } from "@/app/types";
 import TextPostCard from "./user-card.post-card";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { UserContext } from "@/app/context/user-context";
+import { Pagination } from "@/app/components";
+import postRequest from "@/app/request/post";
 
 const UserCardPosts = ({ user }: UserCardProps) => {
-  //여기서 해당 유저의 id로 게시글을 fetch
-  const dummyPosts: PostResponseType[] = [
-    {
-      id: 1,
-      title: "제목테스트 중입니다.",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
+  const [posts, setPosts] = useState<PostResponseType[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPages] = useState(1);
+
+  const { user: loginUser } = useContext(UserContext);
+  const isMyPage = loginUser?.id === user.id;
+
+  const fetchPosts = useCallback(
+    async (page: number) => {
+      const { posts, totalPages } = await postRequest.getUserPosts(
+        String(user.id),
+        page.toString()
+      );
+      console.log("totalPages", totalPages);
+      setPosts(posts);
+      setTotalPages(totalPages);
     },
-    {
-      id: 2,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 3,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 4,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 5,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 6,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 7,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 8,
-      title: "title",
-      content: "content",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-    {
-      id: 9,
-      title: "title",
-      content:
-        "컨텐츠 길이별 테스트중입니다. 컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.컨텐츠 길이별 테스트중입니다.",
-      mainImage: "mainImage",
-      createdAt: String(new Date()),
-      userId: "test",
-      user,
-    },
-  ];
+    [currentPage]
+  );
+
+  useEffect(() => {
+    fetchPosts(currentPage);
+  }, [currentPage]);
 
   return (
     <div className="flex flex-col gap-2 w-3/4">
-      <Label>내 게시글</Label>
-      <CardDescription>내 게시글을 모아볼 수 있어요!</CardDescription>
+      <Label>{isMyPage ? "내 게시글" : `${user.nickname}님의 게시글`}</Label>
+      <CardDescription>
+        {isMyPage
+          ? "내 게시글을 모아볼 수 있어요!"
+          : "다른 사용자의 게시글을 모아볼 수 있어요!"}
+      </CardDescription>
       <div className="flex flex-col gap-2 pb-4">
-        {dummyPosts.map((post) => {
+        {posts.map((post) => {
           return <TextPostCard post={post} key={post.id} />;
         })}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPage={totalPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };

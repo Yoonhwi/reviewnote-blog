@@ -2,6 +2,7 @@
 
 import { FormErrorMessage } from "@/app/components";
 import { PageRoutes } from "@/app/constants/routes";
+import { UserContext } from "@/app/context/user-context";
 import userRequest from "@/app/request/user";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 interface LoginFormType {
@@ -34,11 +36,15 @@ const LoginCard = () => {
     formState: { errors },
     setError,
   } = useForm<LoginFormType>({ defaultValues });
+  const { setUser } = useContext(UserContext);
   const router = useRouter();
 
   const onSubmit = (data: LoginFormType) => {
     userRequest
       .userLogin(data.userId, data.password)
+      .then((res: any) => {
+        setUser(res.data);
+      })
       .then(() => {
         router.push(PageRoutes.Home);
       })

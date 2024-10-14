@@ -1,16 +1,16 @@
 "use client";
-
-import { useCallback, useEffect, useState } from "react";
-import LogoutStatusIcons from "./logout-status.icons";
+import { PageRoutes } from "@/app/constants/routes";
+import { UserContext } from "@/app/context/user-context";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { PageRoutes } from "@/app/constants/routes";
-import userRequest from "@/app/request/user";
+import { useCallback, useContext, useEffect, useState } from "react";
 import LoginStuatsIcons from "./login-status.icons";
+import LogoutStatusIcons from "./logout-status.icons";
+import userRequest from "@/app/request/user";
 
 const BaseLayoutHeader = () => {
-  const [user, setUser] = useState(null);
   const [isTop, setIsTop] = useState(false);
+  const { user, setUser } = useContext(UserContext);
 
   const scrollListener = useCallback(() => {
     setIsTop(window.scrollY > 0);
@@ -25,11 +25,8 @@ const BaseLayoutHeader = () => {
 
   useEffect(() => {
     userRequest.getMe().then((res: any) => {
-      if (res.data) {
-        setUser(res.data);
-      } else {
-        setUser(null);
-      }
+      console.log(res);
+      setUser(res.data);
     });
   }, []);
 

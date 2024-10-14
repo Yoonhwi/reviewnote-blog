@@ -1,17 +1,20 @@
 import { ApiRoutes } from "@/app/constants/routes";
 import { api, toUrl } from "./utils";
+import { CommentResponseType } from "../types/comment";
 
-interface CommentAdd {
+export interface CommentAdd {
   content: string;
-  userId: number;
+  parentId?: number;
 }
 
-const addComment = async (params: CommentAdd, id: string) => {
+const addComment = async (id: string, params: CommentAdd) => {
   return api.post(toUrl(ApiRoutes.Comments, { id }), params);
 };
 
-const getComments = async (id: string) => {
-  return api.get(toUrl(ApiRoutes.Comments, { id }));
+const getComments = async (id: string, page: string) => {
+  return api.get<CommentResponseType>(
+    `${toUrl(ApiRoutes.Comments, { id })}/?page=${page}`
+  );
 };
 
 const getComment = async (id: string) => {

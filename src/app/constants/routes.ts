@@ -12,6 +12,7 @@ export enum ApiRoutes {
   Storage = "/api/storage",
   CheckId = "/api/checkId",
   CheckNickname = "/api/checkNickname",
+  UserPosts = "/api/users/:id/posts",
 }
 
 export enum PageRoutes {
@@ -22,4 +23,6 @@ export enum PageRoutes {
   Board = "/board",
   Post = "/board/post",
   UserDetail = "/user/:id",
+  PostDetail = "/board/:id",
+  PostModify = "/board/:id/modify",
 }

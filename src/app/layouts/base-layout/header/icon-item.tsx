@@ -20,12 +20,12 @@ interface IconItemProps {
 
 const IconItem = ({ icon, tooltip, link, onClick }: IconItemProps) => {
   const router = useRouter();
+
   const handleClick = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (onClick) {
-        await onClick(e);
-        return;
+        return onClick(e);
       }
       router.push(link);
     },

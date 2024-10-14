@@ -7,9 +7,12 @@ import { UserResponseType } from "@/app/types";
 import userRequest from "@/app/request/user";
 import { toUrl } from "@/app/request/utils";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { UserContext } from "@/app/context/user-context";
 
 const LoginStuatsIcons = ({ user }: { user: UserResponseType }) => {
   const router = useRouter();
+  const { setUser } = useContext(UserContext);
   return (
     <ul className={"flex gap-4"}>
       <IconItem
@@ -27,9 +30,14 @@ const LoginStuatsIcons = ({ user }: { user: UserResponseType }) => {
         tooltip="Logout"
         link={"/"}
         onClick={() =>
-          userRequest.userLogout().then(() => {
-            router.push(PageRoutes.Home);
-          })
+          userRequest
+            .userLogout()
+            .then(() => {
+              setUser(null);
+            })
+            .then(() => {
+              router.push(PageRoutes.Home);
+            })
         }
       />
     </ul>

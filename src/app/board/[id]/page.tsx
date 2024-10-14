@@ -1,16 +1,25 @@
-import { dummyPosts } from "@/app/dummy/post";
+"use client";
+
 import { BaseLayout } from "@/app/layouts";
+import postRequest from "@/app/request/post";
+import { useEffect, useState } from "react";
 import DetailPostCard from "./detail-post-card";
+import { Spinner } from "@/app/components";
+import { PostResponseType } from "@/app/types";
 
 const DetailPostPage = ({ params }: { params: { id: number } }) => {
-  const { id } = params;
-  const testData = dummyPosts[0];
-  //여기서 id를 이용해서 게시글 정보를 가져와야 합니다.
+  const [post, setPost] = useState<PostResponseType | null>(null);
+
+  useEffect(() => {
+    postRequest.getPost(params.id.toString()).then((res) => {
+      setPost(res.post);
+    });
+  }, []);
 
   return (
     <BaseLayout>
       <div className="flex flex-col justify-center items-center gap-2 min-h-[800px]">
-        <DetailPostCard post={testData} />
+        {post ? <DetailPostCard post={post} /> : <Spinner />}
       </div>
     </BaseLayout>
   );

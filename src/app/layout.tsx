@@ -1,3 +1,4 @@
+import { UserContextProvider } from "./context/user-context";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSansKr.className} antialiased`}>{children}</body>
+      <body className={`${notoSansKr.className} antialiased`}>
+        <UserContextProvider>{children}</UserContextProvider>
+      </body>
     </html>
   );
 }

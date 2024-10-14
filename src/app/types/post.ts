@@ -1,4 +1,9 @@
 import { UserResponseType } from "@/app/types";
+import { CommentResponseType } from "./comment";
+
+export interface AddPostResponseType {
+  post: PostResponseType;
+}
 
 export interface PostResponseType {
   id: number;
@@ -6,6 +11,11 @@ export interface PostResponseType {
   content: string;
   userId: string;
   createdAt: string;
-  mainImage: string;
+  mainImg: string;
   user: UserResponseType;
+}
+
+export interface GetPostsResponseType {
+  posts: PostResponseType[];
+  totalPages: number;
 }

@@ -16,3 +16,7 @@ export interface PostUser {
   role: UserRole;
   profile: string;
 }
+
+export interface GetUser {
+  user: UserResponseType;
+}

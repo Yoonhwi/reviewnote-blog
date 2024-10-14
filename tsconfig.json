@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/api/posts/[slug]/comments",
-    "src/app/api/posts/[slug]/comments"
+    "src/app/api/posts/[slug]/comments",
+    "src/app/api/auth/logout/route.tss"
   ],
   "exclude": ["node_modules"]
 }

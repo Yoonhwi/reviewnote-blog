@@ -1,17 +1,26 @@
 import { ApiRoutes } from "@/app/constants/routes";
-import { api, toUrl } from "./utils";
 import { PostAdd } from "../api/posts/route";
+import {
+  AddPostResponseType,
+  GetPostsResponseType,
+  PostResponseType,
+} from "../types";
+import { api, toUrl } from "./utils";
+
+interface GetPostDetail {
+  post: PostResponseType;
+}
 
 const addPost = async (params: PostAdd) => {
-  return api.post(ApiRoutes.Posts, params);
+  return api.post<AddPostResponseType>(ApiRoutes.Posts, params);
 };
 
-const getPosts = async () => {
-  return api.get(ApiRoutes.Posts);
+const getPosts = async (page: string) => {
+  return api.get<GetPostsResponseType>(`${ApiRoutes.Posts}?page=${page}`);
 };
 
 const getPost = async (id: string) => {
-  return api.get(toUrl(ApiRoutes.Post, { id }));
+  return api.get<GetPostDetail>(toUrl(ApiRoutes.Post, { id }));
 };
 
 const updatePost = async (id: string, params: PostAdd) => {
@@ -22,6 +31,19 @@ const deletePost = async (id: string) => {
   return api.delete(toUrl(ApiRoutes.Post, { id }));
 };
 
-const postRequest = { addPost, getPosts, getPost, updatePost, deletePost };
+const getUserPosts = async (id: string, page: string) => {
+  return api.get<GetPostsResponseType>(
+    `${toUrl(ApiRoutes.UserPosts, { id })}?page=${page}`
+  );
+};
+
+const postRequest = {
+  addPost,
+  getPosts,
+  getPost,
+  updatePost,
+  deletePost,
+  getUserPosts,
+};
 
 export default postRequest;

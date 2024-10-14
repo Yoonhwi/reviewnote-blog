@@ -1,5 +1,6 @@
 import { ApiRoutes } from "@/app/constants/routes";
 import { api, toUrl } from "./utils";
+import { GetUser, UserResponseType } from "../types";
 
 interface UserAdd {
   userId: string;
@@ -25,10 +26,10 @@ const getUsers = async () => {
 };
 
 const getUser = async (id: string) => {
-  return api.get(toUrl(ApiRoutes.User, { id }));
+  return api.get<GetUser>(toUrl(ApiRoutes.User, { id }));
 };
 
-const updateUser = async (id: string, params: UserAdd) => {
+const updateUser = async (id: string, params: object) => {
   return api.put(toUrl(ApiRoutes.User, { id }), params);
 };
 

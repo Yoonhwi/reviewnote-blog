@@ -1,17 +1,27 @@
 import { PostResponseType } from "@/app/types";
 import Image from "next/image";
 import { formatISO } from "../utils/date";
-import { truncateText } from "../utils/text";
+import { useRouter } from "next/navigation";
+import { toUrl } from "../request/utils";
+import { PageRoutes } from "../constants/routes";
+
 interface PostCardProps {
   post: PostResponseType;
 }
+
 const PostCard = ({ post }: PostCardProps) => {
+  const router = useRouter();
   const createdAt = formatISO(post.createdAt);
 
   return (
-    <div className="flex flex-col shadow-lg bg-white">
+    <div
+      className="flex flex-col shadow-sm bg-white hover:shadow-xl transition duration-300 ease-in-out cursor-pointer"
+      onClick={() => {
+        router.push(toUrl(PageRoutes.PostDetail, { id: String(post.id) }));
+      }}
+    >
       <Image
-        src={post.mainImage}
+        src={post.mainImg}
         alt={`post_img`}
         width={300}
         height={200}
@@ -33,10 +43,7 @@ const PostCard = ({ post }: PostCardProps) => {
       </div>
 
       <div className="flex flex-col gap-2 p-4 overflow-hidden">
-        <h1 className="font-bold">{post.title}</h1>
-        <p className="text-sm h-14 overflow-hidden">
-          {truncateText(post.content, 80)}
-        </p>
+        <h1 className="font-bold overflow-hidden">{post.title}</h1>
       </div>
     </div>
   );

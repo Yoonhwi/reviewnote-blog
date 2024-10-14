@@ -2,6 +2,7 @@
 
 import { FormErrorMessage } from "@/app/components";
 import { PageRoutes } from "@/app/constants/routes";
+import { UserContext } from "@/app/context/user-context";
 import userRequest from "@/app/request/user";
 import { PostUser } from "@/app/types";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 interface AddUserFormType extends PostUser {
@@ -42,6 +44,8 @@ const JoinCard = () => {
     defaultValues: defaultUserValues,
   });
   const router = useRouter();
+  const { setUser } = useContext(UserContext);
+
   const onSubmit = async (data: AddUserFormType) => {
     const { passwordCheck, ...submitData } = data;
     try {
@@ -69,6 +73,9 @@ const JoinCard = () => {
       await userRequest.addUser(submitData);
       await userRequest
         .userLogin(submitData.userId, submitData.password)
+        .then((res: any) => {
+          setUser(res.data);
+        })
         .then(() => {
           router.push(PageRoutes.Home);
         });
