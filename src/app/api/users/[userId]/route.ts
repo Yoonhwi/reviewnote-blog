@@ -46,7 +46,10 @@ export async function PUT(
   return NextResponse.json({ updatedUser }, { status: 200 });
 }
 
-export async function DELETE({ params }: { params: { userId: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { userId: string } }
+) {
   const userId = params.userId;
 
   const user = await client.user.findUnique({
