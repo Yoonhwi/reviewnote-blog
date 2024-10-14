@@ -16,18 +16,15 @@ const BoardPage = () => {
   const [posts, setPosts] = useState<PostResponseType[]>([]);
   const { user } = useContext(UserContext);
 
-  const fetchPosts = useCallback(
-    async (page: number) => {
-      const { posts, totalPages } = await postRequest.getPosts(page.toString());
-      setPosts(posts);
-      setTotalPages(totalPages);
-    },
-    [currentPage]
-  );
+  const fetchPosts = useCallback(async (page: number) => {
+    const { posts, totalPages } = await postRequest.getPosts(page.toString());
+    setPosts(posts);
+    setTotalPages(totalPages);
+  }, []);
 
   useEffect(() => {
     fetchPosts(currentPage);
-  }, [currentPage]);
+  }, [currentPage, fetchPosts]);
 
   return (
     <BaseLayout>

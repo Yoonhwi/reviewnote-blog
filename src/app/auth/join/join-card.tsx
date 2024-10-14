@@ -49,7 +49,7 @@ const JoinCard = () => {
   const { toast } = useToast();
 
   const onSubmit = async (data: AddUserFormType) => {
-    const { passwordCheck, ...submitData } = data; // eslint-disable-line no-unused-vars
+    const { passwordCheck: _, ...submitData } = data;
     try {
       console.log(submitData.userId);
       await userRequest.checkIdExist(submitData.userId);
@@ -75,14 +75,15 @@ const JoinCard = () => {
       await userRequest.addUser(submitData);
       await userRequest
         .userLogin(submitData.userId, submitData.password)
-        .then(() =>
+        .then((res) => {
           toast({
             title: "회원가입 성공",
             description: "정상적으로 회원가입 되었습니다.",
             duration: 3000,
-          })
-        )
-        .then((res: any) => {
+          });
+          return res;
+        })
+        .then((res) => {
           setUser(res.data);
         })
         .then(() => {

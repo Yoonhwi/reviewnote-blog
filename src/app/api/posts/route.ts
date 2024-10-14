@@ -7,7 +7,7 @@ export interface PostAdd {
   content: string;
 }
 
-const validatePostAdd = (params: Record<string, any>) => {
+const validatePostAdd = (params: Record<string, string>) => {
   if (!params.title) {
     throw new Error("Title is required");
   }
