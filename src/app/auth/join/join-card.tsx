@@ -49,7 +49,7 @@ const JoinCard = () => {
   const { toast } = useToast();
 
   const onSubmit = async (data: AddUserFormType) => {
-    const { passwordCheck, ...submitData } = data;
+    const { passwordCheck, ...submitData } = data; // eslint-disable-line no-unused-vars
     try {
       console.log(submitData.userId);
       await userRequest.checkIdExist(submitData.userId);

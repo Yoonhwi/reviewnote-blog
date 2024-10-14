@@ -48,7 +48,7 @@ const QuillEditor = ({ defaultValue = "", onChange }: QuillEditorProps) => {
 
       quillRef.current.root.innerHTML = defaultValue;
     })();
-  }, [onChange]);
+  }, [defaultValue, onChange]);
 
   useEffect(() => {
     if (!quillRef.current) return;

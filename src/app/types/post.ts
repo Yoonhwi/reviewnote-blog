@@ -1,5 +1,4 @@
 import { UserResponseType } from "@/app/types";
-import { CommentResponseType } from "./comment";
 
 export interface AddPostResponseType {
   post: PostResponseType;

@@ -1,14 +1,14 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
-import { UserCardProps } from "./user-card";
-import { CardDescription } from "@/components/ui/card";
-import { GetPostsResponseType, PostResponseType } from "@/app/types";
-import TextPostCard from "./user-card.post-card";
-import { useCallback, useContext, useEffect, useState } from "react";
-import { UserContext } from "@/app/context/user-context";
 import { Pagination } from "@/app/components";
+import { UserContext } from "@/app/context/user-context";
 import postRequest from "@/app/request/post";
+import { PostResponseType } from "@/app/types";
+import { CardDescription } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { UserCardProps } from "./user-card";
+import TextPostCard from "./user-card.post-card";
 
 const UserCardPosts = ({ user }: UserCardProps) => {
   const [posts, setPosts] = useState<PostResponseType[]>([]);
@@ -27,12 +27,12 @@ const UserCardPosts = ({ user }: UserCardProps) => {
       setPosts(posts);
       setTotalPages(totalPages);
     },
-    [currentPage]
+    [user.id]
   );
 
   useEffect(() => {
     fetchPosts(currentPage);
-  }, [currentPage]);
+  }, [currentPage, fetchPosts]);
 
   return (
     <div className="flex flex-col gap-2 w-3/4">

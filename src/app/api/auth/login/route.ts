@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Invalid password" }, { status: 401 });
   }
 
-  const { password, ...userBody } = user;
+  const { password, ...userBody } = user; // eslint-disable-line no-unused-vars
 
   const acessToken = generateToken(
     {

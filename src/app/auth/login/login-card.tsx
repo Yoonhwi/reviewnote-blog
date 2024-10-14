@@ -44,7 +44,7 @@ const LoginCard = () => {
   const onSubmit = (data: LoginFormType) => {
     userRequest
       .userLogin(data.userId, data.password)
-      .then((res: any) => {
+      .then((res) => {
         setUser(res.data);
         toast({
           title: "로그인 성공",

@@ -10,11 +10,8 @@ interface UserAdd {
   nickname: string;
 }
 
-interface User {
-  userId: string;
-  profile: string;
-  role: string;
-  nickname: string;
+interface ResponseUser {
+  data: UserResponseType;
 }
 
 const addUser = async (params: UserAdd) => {
@@ -38,7 +35,7 @@ const deleteUser = async (id: string) => {
 };
 
 const getMe = async () => {
-  return api.get(toUrl(ApiRoutes.Me));
+  return api.get<ResponseUser>(toUrl(ApiRoutes.Me));
 };
 const checkIdExist = async (userId: string) => {
   return api.post(toUrl(ApiRoutes.CheckId), { userId });
@@ -49,7 +46,10 @@ const checkNicknameExist = async (nickname: string) => {
 };
 
 const userLogin = async (userId: string, password: string) => {
-  return api.post(toUrl(ApiRoutes.AuthLogin), { userId, password });
+  return api.post<ResponseUser>(toUrl(ApiRoutes.AuthLogin), {
+    userId,
+    password,
+  });
 };
 
 const userLogout = async () => {

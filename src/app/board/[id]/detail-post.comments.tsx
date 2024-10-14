@@ -34,12 +34,12 @@ const DetailPostComments = ({ postId }: DetailPostCommentsProps) => {
       setComments(comments);
       setTotalPages(totalPage);
     },
-    [currentPage]
+    [postId]
   );
 
   useEffect(() => {
     fetchComments(currentPage);
-  }, [currentPage]);
+  }, [currentPage, fetchComments]);
 
   const onSubmit = (data: CommentAdd) => {
     commentRequest

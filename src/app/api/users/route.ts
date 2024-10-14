@@ -33,21 +33,31 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ message: "User created" }, { status: 201 });
-  } catch (err: any) {
-    const errorTarget = err.meta.target[0];
-    if (errorTarget === "userId") {
-      return NextResponse.json(
-        {
-          message: "Failed to create user",
-          error: "User ID already exists",
-        },
-        { status: 409 }
-      );
-    } else if (errorTarget === "nickname") {
-      return NextResponse.json(
-        { message: "Failed to create user", error: "Nickname already exists" },
-        { status: 422 }
-      );
+  } catch (err: unknown) {
+    if (typeof err === "object" && err !== null && "meta" in err) {
+      const meta = (err as { meta?: { target: string[] } }).meta;
+      if (meta && Array.isArray(meta.target)) {
+        const errorTarget = meta.target[0];
+        if (errorTarget === "userId") {
+          if (errorTarget === "userId") {
+            return NextResponse.json(
+              {
+                message: "Failed to create user",
+                error: "User ID already exists",
+              },
+              { status: 409 }
+            );
+          } else if (errorTarget === "nickname") {
+            return NextResponse.json(
+              {
+                message: "Failed to create user",
+                error: "Nickname already exists",
+              },
+              { status: 422 }
+            );
+          }
+        }
+      }
     }
 
     return NextResponse.json(

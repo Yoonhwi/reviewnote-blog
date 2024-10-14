@@ -2,7 +2,7 @@ import commentRequest, { CommentAdd } from "@/app/request/comment";
 import { _CommentType, CommentType } from "@/app/types/comment";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { toast, useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 

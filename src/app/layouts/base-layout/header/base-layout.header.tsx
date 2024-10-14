@@ -25,10 +25,10 @@ const BaseLayoutHeader = () => {
   }, [scrollListener]);
 
   useEffect(() => {
-    userRequest.getMe().then((res: any) => {
+    userRequest.getMe().then((res) => {
       setUser(res.data);
     });
-  }, []);
+  }, [setUser]);
 
   return (
     <div

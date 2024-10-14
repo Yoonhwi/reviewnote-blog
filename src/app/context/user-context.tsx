@@ -1,8 +1,7 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { UserResponseType } from "../types";
-import userRequest from "../request/user";
 
 interface UserContextInterface {
   user: UserResponseType | null;

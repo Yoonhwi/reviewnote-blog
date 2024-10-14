@@ -14,7 +14,7 @@ const DetailPostPage = ({ params }: { params: { id: number } }) => {
     postRequest.getPost(params.id.toString()).then((res) => {
       setPost(res.post);
     });
-  }, []);
+  }, [params.id]);
 
   return (
     <BaseLayout>

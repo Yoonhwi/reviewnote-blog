@@ -7,9 +7,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, MouseEvent } from "react";
+import { MouseEvent, useCallback } from "react";
 
 interface IconItemProps {
   icon: JSX.Element;

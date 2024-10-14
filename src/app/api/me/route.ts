@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   try {
     const user = jwt.verify(accessToken.value, process.env.JWT_SECRET!);
     return NextResponse.json({ data: user }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ data: null }, { status: 200 });
   }
 }
