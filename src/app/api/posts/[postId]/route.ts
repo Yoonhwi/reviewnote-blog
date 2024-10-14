@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse, NextRequest } from "next/server";
+import { extractMainImg } from "../../utils";
 
 const client = new PrismaClient();
 
@@ -31,14 +32,41 @@ export async function PUT(
   { params }: { params: { postId: string } }
 ) {
   try {
-    const body = await request.json();
-    const postId = params.postId;
-    const post = await client.post.update({
-      where: { id: Number(postId) },
-      data: { ...body },
+    const userId = request.headers.get("current-user-id");
+    const user = await client.user.findUnique({
+      where: { id: Number(userId) },
     });
-    return NextResponse.json({ post }, { status: 200 });
+
+    const post = await client.post.findUnique({
+      where: { id: Number(params.postId) },
+    });
+
+    if (!user) {
+      return new NextResponse("User not found", { status: 404 });
+    }
+
+    if (!post) {
+      return new NextResponse("Post not found", { status: 404 });
+    }
+
+    if (post.userId !== Number(userId) && user?.role !== "admin") {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const body = await request.json();
+    const mainImg = extractMainImg(body.content);
+
+    const postId = params.postId;
+    const responsePost = await client.post.update({
+      where: { id: Number(postId) },
+      data: {
+        mainImg: mainImg ?? process.env.NEXT_PUBLIC_NONE_IMAGE,
+        ...body,
+      },
+    });
+    return NextResponse.json({ post: responsePost }, { status: 200 });
   } catch (err) {
+    console.log(err);
     return NextResponse.json({ message: err }, { status: 500 });
   }
 }
@@ -54,11 +82,19 @@ export async function DELETE(
     where: { id: Number(postId) },
   });
 
+  const user = await client.user.findUnique({
+    where: { id: Number(userId) },
+  });
+
+  if (!user) {
+    return new NextResponse("User not found", { status: 404 });
+  }
+
   if (!post) {
     return new NextResponse("Post not found", { status: 404 });
   }
 
-  if (post.userId !== Number(userId)) {
+  if (post.userId !== Number(userId) && user?.role !== "admin") {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 

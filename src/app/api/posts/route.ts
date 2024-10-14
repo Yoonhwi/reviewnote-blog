@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import { extractMainImg } from "../utils";
 
 export interface PostAdd {
   title: string;
@@ -62,11 +63,14 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
+    const mainImg = extractMainImg(body.content);
+
     const data = {
       userId: Number(userId),
-      mainImg: process.env.NEXT_PUBLIC_NONE_IMAGE,
+      mainImg: mainImg ?? process.env.NEXT_PUBLIC_NONE_IMAGE,
       ...body,
     };
+
     try {
       validatePostAdd(body);
     } catch (err) {

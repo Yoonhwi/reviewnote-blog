@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
   try {
     const body: AddUser = await req.json();
     const hashedPassword = await hash(body.password, 10);
+
     const user = { ...body, password: hashedPassword };
 
     await client.user.create({

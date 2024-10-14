@@ -37,6 +37,12 @@ const getUserPosts = async (id: string, page: string) => {
   );
 };
 
+const getSearchPosts = async (query: string, page: string) => {
+  return api.get<GetPostsResponseType>(
+    `${ApiRoutes.SearchPosts}?query=${query}&page=${page}`
+  );
+};
+
 const postRequest = {
   addPost,
   getPosts,
@@ -44,6 +50,7 @@ const postRequest = {
   updatePost,
   deletePost,
   getUserPosts,
+  getSearchPosts,
 };
 
 export default postRequest;

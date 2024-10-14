@@ -85,102 +85,111 @@ const JoinCard = () => {
   };
 
   return (
-    <Card className="w-[480px] h-[520px] flex flex-col justify-center">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold">회원가입</CardTitle>
-        <CardDescription>계정을 만들어 블로그를 시작해보세요!</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-2">
-            <Label>아이디</Label>
-            <Input
-              id="userId"
-              type="text"
-              placeholder="아이디를 입력하세요."
-              {...register("userId", {
-                required: "아이디를 입력해주세요.",
-                minLength: {
-                  value: 4,
-                  message: "아이디는 4글자 이상이어야 합니다.",
-                },
-                maxLength: {
-                  value: 20,
-                  message: "아이디는 12글자 이하여야 합니다.",
-                },
-              })}
-            />
-            {errors.userId && <FormErrorMessage err={errors.userId.message!} />}
-          </div>
+    <div className="h-[680px] flex justify-center items-center">
+      <Card className="w-[480px] h-[520px] flex flex-col justify-center">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">회원가입</CardTitle>
+          <CardDescription>
+            계정을 만들어 블로그를 시작해보세요!
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="flex flex-col gap-2">
+              <Label>아이디</Label>
+              <Input
+                id="userId"
+                type="text"
+                placeholder="아이디를 입력하세요."
+                {...register("userId", {
+                  required: "아이디를 입력해주세요.",
+                  minLength: {
+                    value: 4,
+                    message: "아이디는 4글자 이상이어야 합니다.",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "아이디는 12글자 이하여야 합니다.",
+                  },
+                })}
+              />
+              {errors.userId && (
+                <FormErrorMessage err={errors.userId.message!} />
+              )}
+            </div>
 
-          <div className="flex flex-col gap-2">
-            <Label>닉네임</Label>
-            <Input
-              id="nickname"
-              type="text"
-              placeholder="닉네임"
-              {...register("nickname", {
-                required: "닉네임을 입력해주세요.",
-                minLength: {
-                  value: 2,
-                  message: "닉네임은 2글자 이상이어야 합니다.",
-                },
-                maxLength: {
-                  value: 8,
-                  message: "닉네임은 8글자 이하여야 합니다.",
-                },
-              })}
-            />
-            {errors.nickname && (
-              <FormErrorMessage err={errors.nickname.message!} />
-            )}
-          </div>
+            <div className="flex flex-col gap-2">
+              <Label>닉네임</Label>
+              <Input
+                id="nickname"
+                type="text"
+                placeholder="닉네임"
+                {...register("nickname", {
+                  required: "닉네임을 입력해주세요.",
+                  minLength: {
+                    value: 2,
+                    message: "닉네임은 2글자 이상이어야 합니다.",
+                  },
+                  maxLength: {
+                    value: 8,
+                    message: "닉네임은 8글자 이하여야 합니다.",
+                  },
+                })}
+              />
+              {errors.nickname && (
+                <FormErrorMessage err={errors.nickname.message!} />
+              )}
+            </div>
 
-          <div className="flex flex-col gap-2">
-            <Label>비밀번호</Label>
-            <Input
-              id="password"
-              type="password"
-              {...register("password", {
-                required: "비밀번호를 입력해주세요.",
-                minLength: {
-                  value: 4,
-                  message: "비밀번호는 4글자 이상이어야 합니다.",
-                },
-                maxLength: {
-                  value: 20,
-                  message: "비밀번호는 20글자 이하여야 합니다.",
-                },
-              })}
-            />
-            {errors.password && (
-              <FormErrorMessage err={errors.password.message!} />
-            )}
-          </div>
+            <div className="flex flex-col gap-2">
+              <Label>비밀번호</Label>
+              <Input
+                id="password"
+                type="password"
+                {...register("password", {
+                  required: "비밀번호를 입력해주세요.",
+                  minLength: {
+                    value: 4,
+                    message: "비밀번호는 4글자 이상이어야 합니다.",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "비밀번호는 20글자 이하여야 합니다.",
+                  },
+                })}
+              />
+              {errors.password && (
+                <FormErrorMessage err={errors.password.message!} />
+              )}
+            </div>
 
-          <div className="flex flex-col gap-2">
-            <Label>비밀번호 확인</Label>
-            <Input
-              id="password2"
-              type="password"
-              {...register("passwordCheck", {
-                required: "비밀번호를 다시 입력해주세요.",
-                validate: (value) =>
-                  value === getValues("password") ||
-                  "비밀번호가 일치하지 않습니다.",
-              })}
-            />
-            {errors.passwordCheck && (
-              <FormErrorMessage err={errors.passwordCheck.message!} />
-            )}
-          </div>
+            <div className="flex flex-col gap-2">
+              <Label>비밀번호 확인</Label>
+              <Input
+                id="password2"
+                type="password"
+                {...register("passwordCheck", {
+                  required: "비밀번호를 다시 입력해주세요.",
+                  validate: (value) =>
+                    value === getValues("password") ||
+                    "비밀번호가 일치하지 않습니다.",
+                })}
+              />
+              {errors.passwordCheck && (
+                <FormErrorMessage err={errors.passwordCheck.message!} />
+              )}
+            </div>
 
-          <Button type="submit" className="w-full">
-            가입하기
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+            <Button type="submit" className="w-full">
+              가입하기
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

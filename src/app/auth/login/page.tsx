@@ -4,9 +4,7 @@ import LoginCard from "./login-card";
 const LoginPage = () => {
   return (
     <BaseLayout>
-      <div className="h-[800px] flex justify-center items-center">
-        <LoginCard />
-      </div>
+      <LoginCard />
     </BaseLayout>
   );
 };

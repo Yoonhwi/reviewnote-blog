@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "draft-js": "^0.11.7",
+    "htmlparser2": "^9.1.0",
     "jose": "^5.9.3",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.451.0",

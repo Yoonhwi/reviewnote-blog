@@ -19,7 +19,7 @@ const DetailPostCard = ({ post }: DetailPostCardProps) => {
   const { user } = useContext(UserContext);
   const createdAt = formatISO(post.createdAt);
   const router = useRouter();
-  const isMyPost = user?.id === post.user.id;
+  const isMyPost = user?.id === post.user.id || user?.role === "admin";
 
   return (
     <Card className="flex flex-col w-full h-full flex-grow mb-24 mt-8">

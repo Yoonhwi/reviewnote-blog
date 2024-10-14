@@ -57,49 +57,54 @@ const LoginCard = () => {
   };
 
   return (
-    <Card className="w-[480px] h-[420px] flex flex-col justify-center">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold">로그인</CardTitle>
-        <CardDescription>
-          로그인 아이디와 비밀번호를 입력해주세요.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-2">
-            <Label>아이디</Label>
-            <Input
-              id="userId"
-              type="text"
-              {...register("userId", {
-                required: "아이디를 입력해주세요.",
-              })}
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <Label>비밀번호</Label>
-            <Input
-              id="password"
-              type="password"
-              {...register("password", {
-                required: "비밀번호를 입력해주세요.",
-              })}
-            />
-          </div>
-          {errors.password && (
-            <FormErrorMessage err={errors.password.message!} />
-          )}
-          <Button type="submit" className="w-full">
-            로그인
-          </Button>
-          <Link href={PageRoutes.Join} passHref>
+    <div className="h-[800px] flex justify-center items-center">
+      <Card className="w-[480px] h-[420px] flex flex-col justify-center">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">로그인</CardTitle>
+          <CardDescription>
+            로그인 아이디와 비밀번호를 입력해주세요.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="flex flex-col gap-2">
+              <Label>아이디</Label>
+              <Input
+                id="userId"
+                type="text"
+                {...register("userId", {
+                  required: "아이디를 입력해주세요.",
+                })}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label>비밀번호</Label>
+              <Input
+                id="password"
+                type="password"
+                {...register("password", {
+                  required: "비밀번호를 입력해주세요.",
+                })}
+              />
+            </div>
+            {errors.password && (
+              <FormErrorMessage err={errors.password.message!} />
+            )}
             <Button type="submit" className="w-full">
-              회원가입
+              로그인
             </Button>
-          </Link>
-        </form>
-      </CardContent>
-    </Card>
+            <Link href={PageRoutes.Join} passHref>
+              <Button type="submit" className="w-full">
+                회원가입
+              </Button>
+            </Link>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

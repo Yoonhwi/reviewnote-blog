@@ -15,11 +15,19 @@ export async function PUT(
     where: { id: Number(commentId) },
   });
 
+  const user = await client.user.findUnique({
+    where: { id: Number(userId) },
+  });
+
+  if (!user) {
+    return new NextResponse("User not found", { status: 404 });
+  }
+
   if (!comment) {
     return new NextResponse("Comment not found", { status: 404 });
   }
 
-  if (comment.userId !== Number(userId)) {
+  if (comment.userId !== Number(userId) && user?.role !== "admin") {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
@@ -42,11 +50,15 @@ export async function DELETE(
     where: { id: Number(commentId) },
   });
 
+  const user = await client.user.findUnique({
+    where: { id: Number(userId) },
+  });
+
   if (!comment) {
     return new NextResponse("Comment not found", { status: 404 });
   }
 
-  if (comment.userId !== Number(userId)) {
+  if (comment.userId !== Number(userId) && user?.role !== "admin") {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 

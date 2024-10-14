@@ -45,11 +45,13 @@ const CommentChildCard = ({ comment }: CommentChildCardProps) => {
                 <Button
                   variant="outline"
                   onClick={() => setIsModify(!isModify)}
+                  className="p-1"
                 >
                   {isModify ? "수정취소" : "수정"}
                 </Button>
                 <Button
                   variant="outline"
+                  className="p-1"
                   onClick={() => {
                     commentRequest.deleteComment(String(comment.id));
                   }}

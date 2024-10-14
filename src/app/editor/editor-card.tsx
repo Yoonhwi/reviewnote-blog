@@ -51,8 +51,6 @@ const EditorCard = () => {
       return;
     }
 
-    console.log("hit2");
-
     postRequest
       .addPost(data)
       .then((res) => {
@@ -75,54 +73,61 @@ const EditorCard = () => {
   }, []);
 
   return (
-    <Card className="w-[800px] flex flex-col justify-center">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold">게시글 작성</CardTitle>
-        <CardDescription>이야기를 공유해보세요!</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-2">
-            <Label>Title</Label>
-            <Input
-              id="title"
-              type="text"
-              placeholder="제목을 입력하세요."
-              {...register("title", {
-                required: "제목을 입력해주세요.",
-                minLength: {
-                  value: 4,
-                  message: "제목은 4글자 이상이어야 합니다.",
-                },
-                maxLength: {
-                  value: 20,
-                  message: "제목은 20글자 이하여야 합니다.",
-                },
-              })}
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <Label>Content</Label>
-            {mounted && (
-              <QuillEditor
-                onChange={(value) => {
-                  setValue("content", value);
-                  clearErrors("content");
-                }}
+    <div className="flex flex-col items-center justify-center gap-2 my-24">
+      <Card className="w-[800px] flex flex-col justify-center">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">게시글 작성</CardTitle>
+          <CardDescription>이야기를 공유해보세요!</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="flex flex-col gap-2">
+              <Label>Title</Label>
+              <Input
+                id="title"
+                type="text"
+                placeholder="제목을 입력하세요."
+                {...register("title", {
+                  required: "제목을 입력해주세요.",
+                  minLength: {
+                    value: 4,
+                    message: "제목은 4글자 이상이어야 합니다.",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "제목은 20글자 이하여야 합니다.",
+                  },
+                })}
               />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label>Content</Label>
+              {mounted && (
+                <QuillEditor
+                  onChange={(value) => {
+                    setValue("content", value);
+                    clearErrors("content");
+                  }}
+                />
+              )}
+            </div>
+            {errors.title && <FormErrorMessage err={errors.title.message!} />}
+            {errors.content && (
+              <FormErrorMessage err={errors.content.message!} />
             )}
-          </div>
-          {errors.title && <FormErrorMessage err={errors.title.message!} />}
-          {errors.content && <FormErrorMessage err={errors.content.message!} />}
-          <div className="flex justify-end">
-            <Button type="submit" variant={"outline"}>
-              POST
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+            <div className="flex justify-end">
+              <Button type="submit" variant={"outline"}>
+                POST
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

@@ -25,7 +25,6 @@ const BaseLayoutHeader = () => {
 
   useEffect(() => {
     userRequest.getMe().then((res: any) => {
-      console.log(res);
       setUser(res.data);
     });
   }, []);

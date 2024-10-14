@@ -27,7 +27,7 @@ const CommentCard = ({ comment, postId }: CommentCardProps) => {
     if (isReply) setIsModify(false);
   }, [isModify, isReply]);
 
-  const isMyComment = user?.id === comment.user.id;
+  const isMyComment = user?.id === comment.user.id || user?.role === "admin";
   const createdAt = formatISO(comment.createdAt);
 
   return (

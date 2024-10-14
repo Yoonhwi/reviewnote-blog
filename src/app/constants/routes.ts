@@ -13,6 +13,7 @@ export enum ApiRoutes {
   CheckId = "/api/checkId",
   CheckNickname = "/api/checkNickname",
   UserPosts = "/api/users/:id/posts",
+  SearchPosts = "/api/posts/search",
 }
 
 export enum PageRoutes {

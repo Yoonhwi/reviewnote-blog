@@ -88,7 +88,7 @@ const EditorModifyCard = ({ params }: { params: { id: number } }) => {
 
   return (
     <BaseLayout>
-      <div className="h-[680px] flex flex-col items-center justify-center gap-2 my-24">
+      <div className="flex flex-col items-center justify-center gap-2 my-24">
         <Card className="w-[800px] flex flex-col justify-center">
           <CardHeader>
             <CardTitle className="text-2xl font-bold">게시글 수정</CardTitle>

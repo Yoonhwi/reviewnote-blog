@@ -1,5 +1,6 @@
 import { errorMessages } from "@/middleware";
-import { JWTPayload, jwtVerify } from "jose";
+import { Parser } from "htmlparser2";
+import { JWTPayload } from "jose";
 import jwt from "jsonwebtoken";
 
 export interface GenerateTokenPayload {
@@ -53,3 +54,20 @@ export async function getUserFromTokenPayload(payload: JWTPayload) {
   }
   return payload as unknown as GenerateTokenPayload;
 }
+
+export const extractMainImg = (content: string): string | null => {
+  let mainImg: string | null = null;
+  const parser = new Parser({
+    onopentag(name, attribs) {
+      if (name === "img") {
+        mainImg = attribs.src;
+        parser.reset();
+      }
+    },
+  });
+
+  parser.write(content);
+  parser.end();
+
+  return mainImg;
+};
