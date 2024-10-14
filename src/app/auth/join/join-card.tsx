@@ -49,9 +49,15 @@ const JoinCard = () => {
   const { toast } = useToast();
 
   const onSubmit = async (data: AddUserFormType) => {
-    const { passwordCheck: _, ...submitData } = data;
+    const submitData: PostUser = {
+      userId: data.userId,
+      nickname: data.nickname,
+      password: data.password,
+      role: "user",
+      profile: data.profile,
+    };
+
     try {
-      console.log(submitData.userId);
       await userRequest.checkIdExist(submitData.userId);
     } catch {
       setError("userId", {

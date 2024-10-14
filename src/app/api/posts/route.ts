@@ -74,7 +74,6 @@ export async function POST(req: NextRequest) {
     try {
       validatePostAdd(body);
     } catch (err) {
-      console.log("err1", err);
       return NextResponse.json({ message: err }, { status: 400 });
     }
     const post = await client.post.create({
@@ -82,7 +81,6 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ post }, { status: 201 });
   } catch (err) {
-    console.log("err2", err);
     return NextResponse.json(
       { message: "Failed to create post", error: err },
       { status: 500 }

@@ -25,29 +25,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Invalid password" }, { status: 401 });
   }
 
-  const { password: _, ...userBody } = user;
+  const userBody = {
+    id: user.id,
+    userId: user.userId,
+    nickname: user.nickname,
+    role: user.role,
+    createdAt: user.createdAt,
+  };
 
-  const acessToken = generateToken(
-    {
-      id: user.id,
-      userId: user.userId,
-      nickname: user.nickname,
-      role: user.role,
-      createdAt: user.createdAt,
-    },
-    "1h"
-  );
+  const acessToken = generateToken(userBody, "1h");
 
-  const refreshToken = generateToken(
-    {
-      id: user.id,
-      userId: user.userId,
-      nickname: user.nickname,
-      role: user.role,
-      createdAt: user.createdAt,
-    },
-    "7d"
-  );
+  const refreshToken = generateToken(userBody, "7d");
 
   const response = NextResponse.json({ data: userBody }, { status: 200 });
   response.cookies.set("access-token", acessToken);
