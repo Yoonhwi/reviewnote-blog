@@ -7,6 +7,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import LoginStuatsIcons from "./login-status.icons";
 import LogoutStatusIcons from "./logout-status.icons";
 import userRequest from "@/app/request/user";
+import Image from "next/image";
 
 const BaseLayoutHeader = () => {
   const [isTop, setIsTop] = useState(false);
@@ -40,7 +41,16 @@ const BaseLayoutHeader = () => {
     >
       <div className="w-[1280px] flex justify-between items-center">
         <Link href={PageRoutes.Home}>
-          <h1>LOGO</h1>
+          <div className="flex gap-4 items-center">
+            <Image
+              src={"/images/logo.png"}
+              width={50}
+              height={30}
+              alt="logo"
+              className="w-[50px] h-[30px]"
+            />
+            <span className="font-bold text-xl">BLOG-TASK</span>
+          </div>
         </Link>
         <nav>
           {user ? <LoginStuatsIcons user={user} /> : <LogoutStatusIcons />}

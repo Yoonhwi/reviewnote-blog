@@ -24,7 +24,6 @@ const UserCardPosts = ({ user }: UserCardProps) => {
         String(user.id),
         page.toString()
       );
-      console.log("totalPages", totalPages);
       setPosts(posts);
       setTotalPages(totalPages);
     },

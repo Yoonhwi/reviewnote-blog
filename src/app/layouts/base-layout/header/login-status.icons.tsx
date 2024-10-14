@@ -36,7 +36,7 @@ const LoginStuatsIcons = ({ user }: { user: UserResponseType }) => {
               setUser(null);
             })
             .then(() => {
-              router.push(PageRoutes.Home);
+              router.push(PageRoutes.Home, { scroll: false });
             })
         }
       />

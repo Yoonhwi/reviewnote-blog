@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
@@ -38,15 +39,21 @@ const LoginCard = () => {
   } = useForm<LoginFormType>({ defaultValues });
   const { setUser } = useContext(UserContext);
   const router = useRouter();
+  const { toast } = useToast();
 
   const onSubmit = (data: LoginFormType) => {
     userRequest
       .userLogin(data.userId, data.password)
       .then((res: any) => {
         setUser(res.data);
+        toast({
+          title: "로그인 성공",
+          description: `${res.data.nickname}님 환영합니다.`,
+          duration: 3000,
+        });
       })
       .then(() => {
-        router.push(PageRoutes.Home);
+        router.push(PageRoutes.Home, { scroll: false });
       })
       .catch(() => {
         setError("password", {

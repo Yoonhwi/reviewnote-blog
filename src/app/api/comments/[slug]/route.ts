@@ -37,11 +37,14 @@ export async function DELETE(
   });
 
   if (!comment) {
-    return new NextResponse("Comment not found", { status: 404 });
+    return NextResponse.json({ message: "Comment not found" }, { status: 404 });
   }
 
   await client.comment.delete({
     where: { id: Number(slug) },
   });
-  return new NextResponse(`${slug} Comment deleted`, { status: 200 });
+  return NextResponse.json(
+    { message: `${slug} Comment deleted` },
+    { status: 200 }
+  );
 }

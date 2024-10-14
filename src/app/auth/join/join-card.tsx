@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
@@ -45,6 +46,7 @@ const JoinCard = () => {
   });
   const router = useRouter();
   const { setUser } = useContext(UserContext);
+  const { toast } = useToast();
 
   const onSubmit = async (data: AddUserFormType) => {
     const { passwordCheck, ...submitData } = data;
@@ -73,11 +75,18 @@ const JoinCard = () => {
       await userRequest.addUser(submitData);
       await userRequest
         .userLogin(submitData.userId, submitData.password)
+        .then(() =>
+          toast({
+            title: "회원가입 성공",
+            description: "정상적으로 회원가입 되었습니다.",
+            duration: 3000,
+          })
+        )
         .then((res: any) => {
           setUser(res.data);
         })
         .then(() => {
-          router.push(PageRoutes.Home);
+          router.push(PageRoutes.Home, { scroll: false });
         });
     } catch (err) {
       console.error(err);

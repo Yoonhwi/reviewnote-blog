@@ -5,6 +5,7 @@ import { UserResponseType } from "@/app/types";
 import { Button } from "@/components/ui/button";
 import { CardDescription } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 import { useContext, useState } from "react";
 
@@ -14,6 +15,7 @@ interface UserCardProfileProps {
 const UserCardProfile = ({ user }: UserCardProfileProps) => {
   const [img, setImg] = useState(user.profile);
   const { user: loginUser } = useContext(UserContext);
+  const { toast } = useToast();
   const isMyPage = loginUser?.id === user.id;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +65,15 @@ const UserCardProfile = ({ user }: UserCardProfileProps) => {
               />
               <Button
                 onClick={() => {
-                  userRequest.updateUser(String(user.id), { profile: img });
+                  userRequest
+                    .updateUser(String(user.id), { profile: img })
+                    .then(() =>
+                      toast({
+                        title: "이미지 변경 성공",
+                        description: `프로필 이미지가 성공적으로 변경되었습니다.`,
+                        duration: 3000,
+                      })
+                    );
                 }}
               >
                 변경 완료

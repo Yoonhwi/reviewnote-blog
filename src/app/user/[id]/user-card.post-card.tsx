@@ -15,7 +15,9 @@ const TextPostCard = ({ post }: TextPostCardProps) => {
     <div
       className="flex flex-col border-b-2 border-stone-300 p-2 gap-4 hover:shadow-sm transition duration-300 ease-in-out transform  cursor-pointer"
       onClick={() => {
-        router.push(toUrl(PageRoutes.PostDetail, { id: String(post.id) }));
+        router.push(toUrl(PageRoutes.PostDetail, { id: String(post.id) }), {
+          scroll: false,
+        });
       }}
     >
       <div className="flex gap-4 items-center">

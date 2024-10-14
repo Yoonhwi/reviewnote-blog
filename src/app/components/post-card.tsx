@@ -17,7 +17,9 @@ const PostCard = ({ post }: PostCardProps) => {
     <div
       className="flex flex-col shadow-sm bg-white hover:shadow-xl transition duration-300 ease-in-out cursor-pointer"
       onClick={() => {
-        router.push(toUrl(PageRoutes.PostDetail, { id: String(post.id) }));
+        router.push(toUrl(PageRoutes.PostDetail, { id: String(post.id) }), {
+          scroll: false,
+        });
       }}
     >
       <Image
@@ -26,6 +28,7 @@ const PostCard = ({ post }: PostCardProps) => {
         width={300}
         height={200}
         className="w-full h-80 object-cover"
+        priority
       />
 
       <div className="flex gap-2 items-center p-2">
@@ -35,6 +38,7 @@ const PostCard = ({ post }: PostCardProps) => {
           width={60}
           height={60}
           className="rounded-full"
+          priority
         />
         <div className="flex flex-col gap-2">
           <span>{post.user.nickname}</span>

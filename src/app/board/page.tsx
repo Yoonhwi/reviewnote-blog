@@ -19,7 +19,6 @@ const BoardPage = () => {
   const fetchPosts = useCallback(
     async (page: number) => {
       const { posts, totalPages } = await postRequest.getPosts(page.toString());
-      console.log("totalPages", totalPages);
       setPosts(posts);
       setTotalPages(totalPages);
     },

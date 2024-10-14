@@ -27,7 +27,7 @@ const IconItem = ({ icon, tooltip, link, onClick }: IconItemProps) => {
       if (onClick) {
         return onClick(e);
       }
-      router.push(link);
+      router.push(link, { scroll: false });
     },
     [onClick, router, link]
   );

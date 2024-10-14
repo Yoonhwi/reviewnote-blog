@@ -1,11 +1,12 @@
 import { Pagination } from "@/app/components";
-import { CommentResponseType, CommentType } from "@/app/types/comment";
+import commentRequest, { CommentAdd } from "@/app/request/comment";
+import { CommentType } from "@/app/types/comment";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import CommentCard from "./comment-card";
-import { useForm } from "react-hook-form";
-import commentRequest, { CommentAdd } from "@/app/request/comment";
+import { toast } from "@/hooks/use-toast";
 import { useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import CommentCard from "./comment-card";
 
 interface DetailPostCommentsProps {
   postId: number;
@@ -20,7 +21,7 @@ const DetailPostComments = ({ postId }: DetailPostCommentsProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { register, handleSubmit } = useForm<CommentAdd>({
+  const { register, handleSubmit, reset } = useForm<CommentAdd>({
     defaultValues,
   });
 
@@ -41,9 +42,19 @@ const DetailPostComments = ({ postId }: DetailPostCommentsProps) => {
   }, [currentPage]);
 
   const onSubmit = (data: CommentAdd) => {
-    commentRequest.addComment(String(postId), data).then(() => {
-      //새로고침을 하든 새로페칭을 하든 해야함.
-    });
+    commentRequest
+      .addComment(String(postId), data)
+      .then(() => {
+        fetchComments(currentPage);
+      })
+      .then(() => {
+        reset();
+        toast({
+          title: "댓글 작성 성공",
+          description: "댓글이 성공적으로 작성되었습니다.",
+          duration: 3000,
+        });
+      });
   };
 
   return (
@@ -66,7 +77,12 @@ const DetailPostComments = ({ postId }: DetailPostCommentsProps) => {
       <div className="flex flex-col">
         {comments.map((comment) => {
           return (
-            <CommentCard comment={comment} key={comment.id} postId={postId} />
+            <CommentCard
+              comment={comment}
+              key={comment.id}
+              postId={postId}
+              callback={() => fetchComments(currentPage)}
+            />
           );
         })}
         <Pagination

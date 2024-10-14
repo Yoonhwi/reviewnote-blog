@@ -55,16 +55,16 @@ export async function DELETE(
   });
 
   if (!comment) {
-    return new NextResponse("Comment not found", { status: 404 });
+    return NextResponse.json({ message: "Comment not found" }, { status: 404 });
   }
 
   if (comment.userId !== Number(userId) && user?.role !== "admin") {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
   await client.comment.delete({
     where: { id: Number(commentId) },
   });
 
-  return new NextResponse(`${commentId} Comment deleted`, { status: 200 });
+  return NextResponse.json({ message: "success deleted" }, { status: 200 });
 }

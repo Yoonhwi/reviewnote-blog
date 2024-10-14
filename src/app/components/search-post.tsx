@@ -15,7 +15,7 @@ const SearchPost = () => {
 
   const onSubmit = useCallback(
     (data: { search: string }) => {
-      router.push(`/search?query=${data.search}`);
+      router.push(`/search?query=${data.search}`, { scroll: false });
     },
     [router]
   );

@@ -7,17 +7,20 @@ import { Button } from "@/components/ui/button";
 import ModifyCommentForm from "./modify-comment-form";
 import { UserContext } from "@/app/context/user-context";
 import commentRequest from "@/app/request/comment";
+import { useToast } from "@/hooks/use-toast";
 
 interface CommentChildCardProps {
   comment: _CommentType;
+  callback?: () => void;
 }
 
-const CommentChildCard = ({ comment }: CommentChildCardProps) => {
+const CommentChildCard = ({ comment, callback }: CommentChildCardProps) => {
   const { user } = useContext(UserContext);
   const [isModify, setIsModify] = useState(false);
   const createdAt = formatISO(comment.createdAt);
 
   const isMyComment = user?.id === comment.user.id;
+  const { toast } = useToast();
 
   return (
     <div className="flex gap-6 items-center p-4 border-b-2 border-stone-100 bg-slate-100 pl-12">
@@ -31,6 +34,7 @@ const CommentChildCard = ({ comment }: CommentChildCardProps) => {
           height={54}
           alt="user_img"
           className="rounded-full w-[54px] h-[54px]"
+          priority
         />
 
         <div className="flex flex-col gap-4 flex-1">
@@ -52,9 +56,19 @@ const CommentChildCard = ({ comment }: CommentChildCardProps) => {
                 <Button
                   variant="outline"
                   className="p-1"
-                  onClick={() => {
-                    commentRequest.deleteComment(String(comment.id));
-                  }}
+                  onClick={() =>
+                    commentRequest
+                      .deleteComment(String(comment.id))
+                      .then(() =>
+                        toast({
+                          title: "댓글 삭제 성공",
+                          description: "댓글이 성공적으로 삭제되었습니다.",
+                          duration: 3000,
+                        })
+                      )
+                      .then(callback)
+                      .catch((err) => console.log(err))
+                  }
                 >
                   삭제
                 </Button>
@@ -62,7 +76,11 @@ const CommentChildCard = ({ comment }: CommentChildCardProps) => {
             )}
           </div>
           {isModify ? (
-            <ModifyCommentForm comment={comment} />
+            <ModifyCommentForm
+              comment={comment}
+              setIsModify={setIsModify}
+              callback={callback}
+            />
           ) : (
             <p>{comment.content}</p>
           )}

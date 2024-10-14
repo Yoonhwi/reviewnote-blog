@@ -44,39 +44,45 @@ const Pagination = ({
 
   return (
     <_Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious
-            onClick={() => handlePageChange(currentPage - 1)}
-            aria-disabled={currentPage === 1}
-            className={
-              currentPage === 1 ? "pointer-events-none opacity-50" : ""
-            }
-          />
-        </PaginationItem>
-
-        {pageNumbers.map((page) => (
-          <PaginationItem key={page}>
-            <PaginationLink
-              onClick={() => handlePageChange(page)}
-              aria-current={currentPage === page ? "page" : undefined}
-              className={currentPage === page ? "font-bold" : ""}
-            >
-              {page}
-            </PaginationLink>
+      {pageNumbers.length > 0 && (
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={() => handlePageChange(currentPage - 1)}
+              aria-disabled={currentPage === 1}
+              className={
+                currentPage === 1
+                  ? "pointer-events-none opacity-50"
+                  : "hover:cursor-pointer"
+              }
+            />
           </PaginationItem>
-        ))}
 
-        <PaginationItem>
-          <PaginationNext
-            onClick={() => handlePageChange(currentPage + 1)}
-            aria-disabled={currentPage === totalPage}
-            className={
-              currentPage === totalPage ? "pointer-events-none opacity-50" : ""
-            }
-          />
-        </PaginationItem>
-      </PaginationContent>
+          {pageNumbers.map((page) => (
+            <PaginationItem key={page}>
+              <PaginationLink
+                onClick={() => handlePageChange(page)}
+                aria-current={currentPage === page ? "page" : undefined}
+                className={currentPage === page ? "font-bold" : ""}
+              >
+                {page}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => handlePageChange(currentPage + 1)}
+              aria-disabled={currentPage === totalPage}
+              className={
+                currentPage === totalPage
+                  ? "pointer-events-none opacity-50"
+                  : "hover:cursor-pointer"
+              }
+            />
+          </PaginationItem>
+        </PaginationContent>
+      )}
     </_Pagination>
   );
 };

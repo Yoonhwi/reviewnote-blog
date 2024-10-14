@@ -37,7 +37,8 @@ const DetailPostCard = ({ post }: DetailPostCardProps) => {
                   variant={"outline"}
                   onClick={() => {
                     router.push(
-                      toUrl(PageRoutes.PostModify, { id: String(post.id) })
+                      toUrl(PageRoutes.PostModify, { id: String(post.id) }),
+                      { scroll: false }
                     );
                   }}
                 >
@@ -50,7 +51,7 @@ const DetailPostCard = ({ post }: DetailPostCardProps) => {
                     postRequest
                       .deletePost(String(post.id))
                       .then(() => {
-                        router.push(PageRoutes.Board);
+                        router.push(PageRoutes.Board, { scroll: false });
                       })
                       .catch((err) => console.log(err))
                   }
@@ -73,9 +74,11 @@ const DetailPostCard = ({ post }: DetailPostCardProps) => {
               className="rounded-full w-full hover:shadow-md transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
               onClick={() => {
                 router.push(
-                  toUrl(PageRoutes.UserDetail, { id: String(post.user.id) })
+                  toUrl(PageRoutes.UserDetail, { id: String(post.user.id) }),
+                  { scroll: false }
                 );
               }}
+              priority
             />
             <span>{post.user.nickname} 님의 게시글</span>
           </div>

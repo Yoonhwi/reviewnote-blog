@@ -18,6 +18,7 @@ import { PageRoutes } from "../constants/routes";
 import postRequest from "../request/post";
 import { toUrl } from "../request/utils";
 import QuillEditor from "./editor-quill";
+import { useToast } from "@/hooks/use-toast";
 
 export interface PostEidtorFormType {
   title: string;
@@ -39,6 +40,7 @@ const EditorCard = () => {
     clearErrors,
   } = useForm({ defaultValues });
 
+  const { toast } = useToast();
   const router = useRouter();
   const onSubmit = useCallback((data: PostEidtorFormType) => {
     console.log("hit1");
@@ -54,11 +56,26 @@ const EditorCard = () => {
     postRequest
       .addPost(data)
       .then((res) => {
+        toast({
+          title: "게시글 작성 성공",
+          description: "게시글이 성공적으로 작성되었습니다.",
+          duration: 3000,
+        });
+        return res;
+      })
+      .then((res) => {
         const postId = res.post.id;
-        router.push(toUrl(PageRoutes.PostDetail, { id: String(postId) }));
+        router.push(toUrl(PageRoutes.PostDetail, { id: String(postId) }), {
+          scroll: false,
+        });
       })
       .catch((err) => {
-        console.log("error:", err);
+        toast({
+          variant: "destructive",
+          title: "게시글 작성 실패",
+          description: "게시글 작성에 실패했습니다.",
+          duration: 3000,
+        });
         setError("content", {
           type: "manual",
           message: "게시글 작성에 실패했습니다.",

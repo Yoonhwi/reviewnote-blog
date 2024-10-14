@@ -21,6 +21,7 @@ import { PageRoutes } from "@/app/constants/routes";
 import QuillEditor from "@/app/editor/editor-quill";
 import { FormErrorMessage } from "@/app/components";
 import { BaseLayout } from "@/app/layouts";
+import { useToast } from "@/hooks/use-toast";
 
 interface EditorModifyCardProps {
   post: PostResponseType;
@@ -47,6 +48,7 @@ const EditorModifyCard = ({ params }: { params: { id: number } }) => {
   });
 
   const router = useRouter();
+  const { toast } = useToast();
 
   useEffect(() => {
     postRequest.getPost(String(postId)).then((res) => {
@@ -69,10 +71,19 @@ const EditorModifyCard = ({ params }: { params: { id: number } }) => {
 
     postRequest
       .updatePost(String(postId), data)
+      .then(() =>
+        toast({
+          title: "게시글 수정 성공",
+          description: "게시글이 성공적으로 수정되었습니다.",
+          duration: 3000,
+        })
+      )
       .then(() => {
-        router.push(toUrl(PageRoutes.PostDetail, { id: String(postId) }));
+        router.push(toUrl(PageRoutes.PostDetail, { id: String(postId) }), {
+          scroll: false,
+        });
       })
-      .catch((err) => {
+      .catch(() => {
         setError("content", {
           type: "manual",
           message: "게시글 작성에 실패했습니다.",
