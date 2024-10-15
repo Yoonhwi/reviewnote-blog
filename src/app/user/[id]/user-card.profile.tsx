@@ -1,7 +1,7 @@
-import { UserContext } from "@/app/context/user-context";
-import { addImage } from "@/app/request/storage";
-import userRequest from "@/app/request/user";
-import { UserResponseType } from "@/app/types";
+import { UserContext } from "@/context/user-context";
+import { addImage } from "@/request/storage";
+import userRequest from "@/request/user";
+import { UserResponseType } from "@/types";
 import { RoundImage } from "@/components";
 import { Button } from "@/components/ui/button";
 import { CardDescription } from "@/components/ui/card";

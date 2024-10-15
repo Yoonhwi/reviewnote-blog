@@ -1,7 +1,7 @@
 import "quill/dist/quill.snow.css";
 import { useEffect, useRef } from "react";
 import Quill from "quill";
-import { addImage } from "../request/storage";
+import { addImage } from "../../request/storage";
 
 const toolbar = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],

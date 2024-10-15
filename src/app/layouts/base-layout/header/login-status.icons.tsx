@@ -2,13 +2,13 @@ import { GoPerson } from "react-icons/go";
 import { IoIosList } from "react-icons/io";
 import { IoLogOutOutline } from "react-icons/io5";
 import IconItem from "./icon-item";
-import { PageRoutes } from "@/app/constants/routes";
-import { UserResponseType } from "@/app/types";
-import userRequest from "@/app/request/user";
-import { toUrl } from "@/app/request/utils";
+import { PageRoutes } from "@/constants/routes";
+import { UserResponseType } from "@/types";
+import userRequest from "@/request/user";
+import { toUrl } from "@/request/utils";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-import { UserContext } from "@/app/context/user-context";
+import { UserContext } from "@/context/user-context";
 
 const LoginStuatsIcons = ({ user }: { user: UserResponseType }) => {
   const router = useRouter();

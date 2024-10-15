@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { authenticator } from "./middlewares/authenticator";
 import { reissuer } from "./middlewares/reissure";
 import { getUserFromTokenPayload } from "./app/api/utils";
-import { PageRoutes } from "./app/constants/routes";
+import { PageRoutes } from "./constants/routes";
 
 export const errorMessages = {
   noAccessToken: "no access-token",
@@ -62,16 +62,20 @@ export async function middleware(request: NextRequest) {
           );
         }
         // 토큰 재발급 실패시 로그인 페이지로 리다이렉트
-        console.log("new url", new URL(PageRoutes.Login, request.url));
-        return NextResponse.redirect(
-          new URL(PageRoutes.Login, request.url),
-          302
-        );
+        const url = new URL(PageRoutes.Login, request.url);
+        console.log("fff new url", url.host, url.hostname, url.href);
+        return NextResponse.redirect(new URL(PageRoutes.Login, request.url), {
+          status: 303,
+        });
       }
     }
 
     // 액세스 토큰이 있고, 만료에러가 아닌 다른 에러인 경우
     console.log("new url", new URL(PageRoutes.Login, request.url));
-    return NextResponse.redirect(new URL(PageRoutes.Login, request.url), 302);
+    return NextResponse.redirect(new URL(PageRoutes.Login, request.url));
   }
 }
+
+export const config = {
+  matcher: ["/api/:path*", "/((?!_next|api/auth).*)(.+)"],
+};

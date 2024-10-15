@@ -1,5 +1,5 @@
 "use client";
-import { UserResponseType } from "@/app/types";
+import { UserResponseType } from "@/types";
 import {
   Card,
   CardContent,
@@ -10,7 +10,7 @@ import {
 import UserCardPosts from "./user-card.posts";
 import UserCardProfile from "./user-card.profile";
 import { useContext } from "react";
-import { UserContext } from "@/app/context/user-context";
+import { UserContext } from "@/context/user-context";
 
 export interface UserCardProps {
   user: UserResponseType;

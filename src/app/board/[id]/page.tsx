@@ -1,11 +1,11 @@
 "use client";
 
 import { BaseLayout } from "@/app/layouts";
-import postRequest from "@/app/request/post";
+import postRequest from "@/request/post";
 import { useEffect, useState } from "react";
 import DetailPostCard from "./detail-post-card";
 import { Spinner } from "@/components";
-import { PostResponseType } from "@/app/types";
+import { PostResponseType } from "@/types";
 
 const DetailPostPage = ({ params }: { params: { id: number } }) => {
   const [post, setPost] = useState<PostResponseType | null>(null);

@@ -1,7 +1,7 @@
-import { PageRoutes } from "@/app/constants/routes";
-import { toUrl } from "@/app/request/utils";
-import { PostResponseType } from "@/app/types";
-import { truncateText, formatISO } from "@/app/utils";
+import { PageRoutes } from "@/constants/routes";
+import { toUrl } from "@/request/utils";
+import { PostResponseType } from "@/types";
+import { truncateText, formatISO } from "@/utils";
 import { useRouter } from "next/navigation";
 
 interface TextPostCardProps {

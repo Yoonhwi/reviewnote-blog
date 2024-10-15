@@ -1,7 +1,7 @@
 import { IoIosList } from "react-icons/io";
 import { PiSignIn } from "react-icons/pi";
 import IconItem from "./icon-item";
-import { PageRoutes } from "@/app/constants/routes";
+import { PageRoutes } from "@/constants/routes";
 
 const LogoutStatusIcons = () => {
   return (

@@ -2,8 +2,8 @@
 
 import { BaseLayout } from "@/app/layouts";
 import UserCard from "./user-card";
-import userRequest from "@/app/request/user";
-import { UserResponseType } from "@/app/types";
+import userRequest from "@/request/user";
+import { UserResponseType } from "@/types";
 import { useEffect, useState } from "react";
 import { Spinner } from "@/components";
 

@@ -1,12 +1,12 @@
 "use client";
-import { PageRoutes } from "@/app/constants/routes";
-import { UserContext } from "@/app/context/user-context";
+import { PageRoutes } from "@/constants/routes";
+import { UserContext } from "@/context/user-context";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useCallback, useContext, useEffect, useState } from "react";
 import LoginStuatsIcons from "./login-status.icons";
 import LogoutStatusIcons from "./logout-status.icons";
-import userRequest from "@/app/request/user";
+import userRequest from "@/request/user";
 import Image from "next/image";
 
 const BaseLayoutHeader = () => {
@@ -39,7 +39,7 @@ const BaseLayoutHeader = () => {
         }
       )}
     >
-      <div className="w-[1280px] flex justify-between items-center">
+      <div className="w-[1280px] flex  justify-between items-center">
         <Link href={PageRoutes.Home} scroll={false}>
           <div className="flex gap-4 items-center">
             <Image

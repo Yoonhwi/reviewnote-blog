@@ -1,6 +1,6 @@
 import { Pagination } from "@/components";
-import commentRequest, { CommentAdd } from "@/app/request/comment";
-import { CommentType } from "@/app/types/comment";
+import commentRequest, { CommentAdd } from "@/request/comment";
+import { CommentType } from "@/types/comment";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";

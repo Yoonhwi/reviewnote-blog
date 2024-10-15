@@ -1,9 +1,9 @@
-import { PostResponseType } from "@/app/types";
+import { PostResponseType } from "@/types";
 import Image from "next/image";
-import { formatISO } from "../app/utils/date";
+import { formatISO } from "../utils/date";
 import { useRouter } from "next/navigation";
-import { toUrl } from "../app/request/utils";
-import { PageRoutes } from "../app/constants/routes";
+import { toUrl } from "../request/utils";
+import { PageRoutes } from "../constants/routes";
 import { RoundImage } from "@/components";
 
 interface PostCardProps {

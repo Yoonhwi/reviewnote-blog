@@ -1,7 +1,7 @@
-import { UserContext } from "@/app/context/user-context";
-import commentRequest from "@/app/request/comment";
-import { _CommentType } from "@/app/types/comment";
-import { formatISO } from "@/app/utils";
+import { UserContext } from "@/context/user-context";
+import commentRequest from "@/request/comment";
+import { _CommentType } from "@/types/comment";
+import { formatISO } from "@/utils";
 import { RoundImage } from "@/components";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";

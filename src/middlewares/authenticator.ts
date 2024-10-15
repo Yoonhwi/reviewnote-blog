@@ -1,4 +1,4 @@
-import { ApiRoutes } from "@/app/constants/routes";
+import { ApiRoutes } from "@/constants/routes";
 import { errorMessages } from "@/middleware";
 import { jwtVerify } from "jose";
 import { JwtPayload } from "jsonwebtoken";

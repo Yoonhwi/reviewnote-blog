@@ -1,9 +1,9 @@
 "use client";
 
 import { Pagination } from "@/components";
-import { UserContext } from "@/app/context/user-context";
-import postRequest from "@/app/request/post";
-import { PostResponseType } from "@/app/types";
+import { UserContext } from "@/context/user-context";
+import postRequest from "@/request/post";
+import { PostResponseType } from "@/types";
 import { CardDescription } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useCallback, useContext, useEffect, useState } from "react";

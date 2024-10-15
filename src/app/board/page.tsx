@@ -4,11 +4,11 @@ import { Dialog, Pagination, PostCard, SearchPost } from "@/components";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { PageRoutes } from "../constants/routes";
-import { UserContext } from "../context/user-context";
+import { PageRoutes } from "../../constants/routes";
+import { UserContext } from "../../context/user-context";
 import { BaseLayout } from "../layouts";
-import postRequest from "../request/post";
-import { PostResponseType } from "../types";
+import postRequest from "../../request/post";
+import { PostResponseType } from "../../types";
 
 const BoardPage = () => {
   const [currentPage, setCurrentPage] = useState(1);

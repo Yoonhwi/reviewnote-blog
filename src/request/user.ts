@@ -1,4 +1,4 @@
-import { ApiRoutes } from "@/app/constants/routes";
+import { ApiRoutes } from "@/constants/routes";
 import { api, toUrl } from "./utils";
 import { GetUser, UserResponseType } from "../types";
 

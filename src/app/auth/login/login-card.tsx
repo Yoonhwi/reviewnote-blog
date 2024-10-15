@@ -1,9 +1,9 @@
 "use client";
 
 import { FormErrorMessage } from "@/components";
-import { PageRoutes } from "@/app/constants/routes";
-import { UserContext } from "@/app/context/user-context";
-import userRequest from "@/app/request/user";
+import { PageRoutes } from "@/constants/routes";
+import { UserContext } from "@/context/user-context";
+import userRequest from "@/request/user";
 import { Button } from "@/components/ui/button";
 import {
   Card,

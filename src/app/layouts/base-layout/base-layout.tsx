@@ -10,7 +10,7 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
     <>
       <BaseLayoutHeader />
       <div className="w-full flex flex-col items-center px-2">
-        <div className="md:w-[680px]  xl:w-[1280px] mt-16">{children}</div>
+        <div className="md:w-[680px] xl:w-[1280px] mt-16">{children}</div>
       </div>
       <BaseLayoutFooter />
     </>

@@ -1,5 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
-import { UserContextProvider } from "./context/user-context";
+import { UserContextProvider } from "../context/user-context";
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 

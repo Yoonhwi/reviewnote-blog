@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { PostCard, SearchPost } from "../components";
 import { BaseLayout } from "./layouts";
-import { PostResponseType } from "./types";
-import postRequest from "./request/post";
+import { PostResponseType } from "../types";
+import postRequest from "../request/post";
 
 const Home = () => {
   const [posts, setPosts] = useState<PostResponseType[]>([]);

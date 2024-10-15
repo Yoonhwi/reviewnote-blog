@@ -1,4 +1,4 @@
-import { UserResponseType } from "@/app/types";
+import { UserResponseType } from "@/types";
 
 export interface AddPostResponseType {
   post: PostResponseType;

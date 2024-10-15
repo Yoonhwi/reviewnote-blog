@@ -1,9 +1,9 @@
-import { PageRoutes } from "@/app/constants/routes";
-import { UserContext } from "@/app/context/user-context";
-import postRequest from "@/app/request/post";
-import { toUrl } from "@/app/request/utils";
-import { PostResponseType } from "@/app/types";
-import { formatISO } from "@/app/utils";
+import { PageRoutes } from "@/constants/routes";
+import { UserContext } from "@/context/user-context";
+import postRequest from "@/request/post";
+import { toUrl } from "@/request/utils";
+import { PostResponseType } from "@/types";
+import { formatISO } from "@/utils";
 import { RoundImage } from "@/components";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

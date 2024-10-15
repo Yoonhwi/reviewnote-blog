@@ -1,5 +1,5 @@
-import { ApiRoutes } from "@/app/constants/routes";
-import { PostAdd } from "../api/posts/route";
+import { ApiRoutes } from "@/constants/routes";
+import { PostAdd } from "../app/api/posts/route";
 import {
   AddPostResponseType,
   GetPostsResponseType,

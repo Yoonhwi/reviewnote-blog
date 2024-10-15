@@ -1,6 +1,6 @@
 "use client";
 
-import { Stacks } from "@/app/constants/stacks";
+import { Stacks } from "@/constants/stacks";
 const BaseLayoutFooter = () => {
   return (
     <div className="w-full flex justify-center bg-slate-50 py-12">
