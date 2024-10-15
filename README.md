@@ -1,8 +1,11 @@
 # Blog
 
 Prisma를 이용해 테이블을 생성하고, Supabase와 연동하여 데이터를 주고받았습니다.
+
 이미지 저장소로는 Supabase의 Storage를 사용하였습니다.
+
 또한, TailwindCSS를 사용하여 스타일링을 진행했습니다. UI의 일관성을 제공하기 위해 Button, Input 등의 다양한 태그 컴포넌트를 직접 생성 및 디자인할 시간이 부족하다고 판단하여, TailwindCSS 기반으로 디자인된 컴포넌트를 제공하는 Shadcn/UI 라이브러리를 사용했습니다.
+
 Next.js 14 버전을 사용하였으며, SSR과 동적 라우팅 기능을 적용해 보았습니다.
 
 ### Getting Started
