@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, Pagination, PostCard, SearchPost } from "@/app/components";
+import { Dialog, Pagination, PostCard, SearchPost } from "@/components";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useCallback, useContext, useEffect, useState } from "react";

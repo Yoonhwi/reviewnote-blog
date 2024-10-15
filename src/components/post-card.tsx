@@ -1,9 +1,10 @@
 import { PostResponseType } from "@/app/types";
 import Image from "next/image";
-import { formatISO } from "../utils/date";
+import { formatISO } from "../app/utils/date";
 import { useRouter } from "next/navigation";
-import { toUrl } from "../request/utils";
-import { PageRoutes } from "../constants/routes";
+import { toUrl } from "../app/request/utils";
+import { PageRoutes } from "../app/constants/routes";
+import { RoundImage } from "@/components";
 
 interface PostCardProps {
   post: PostResponseType;
@@ -32,14 +33,7 @@ const PostCard = ({ post }: PostCardProps) => {
       />
 
       <div className="flex gap-2 items-center p-2">
-        <Image
-          src={post.user.profile}
-          alt="user_img"
-          width={60}
-          height={60}
-          className="rounded-full"
-          priority
-        />
+        <RoundImage size={60} alt="user_img" imgSrc={post.user.profile} />
         <div className="flex flex-col gap-2">
           <span>{post.user.nickname}</span>
           <span>{createdAt}</span>

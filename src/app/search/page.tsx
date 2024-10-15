@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useState } from "react";
-import { Pagination, PostCard, SearchPost } from "../components";
+import { Pagination, PostCard, SearchPost } from "../../components";
 import { BaseLayout } from "../layouts";
 import postRequest from "../request/post";
 import { PostResponseType } from "../types";

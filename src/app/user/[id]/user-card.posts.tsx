@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination } from "@/app/components";
+import { Pagination } from "@/components";
 import { UserContext } from "@/app/context/user-context";
 import postRequest from "@/app/request/post";
 import { PostResponseType } from "@/app/types";

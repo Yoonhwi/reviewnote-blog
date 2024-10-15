@@ -4,3 +4,4 @@ export { default as Pagination } from "./pagination";
 export { default as FormErrorMessage } from "./form-error-message";
 export { default as Dialog } from "./dialog";
 export { default as Spinner } from "./spinner";
+export { default as RoundImage } from "./rounded-img";

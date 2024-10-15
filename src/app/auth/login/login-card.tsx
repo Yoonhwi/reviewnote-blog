@@ -1,6 +1,6 @@
 "use client";
 
-import { FormErrorMessage } from "@/app/components";
+import { FormErrorMessage } from "@/components";
 import { PageRoutes } from "@/app/constants/routes";
 import { UserContext } from "@/app/context/user-context";
 import userRequest from "@/app/request/user";

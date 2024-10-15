@@ -5,7 +5,7 @@ import UserCard from "./user-card";
 import userRequest from "@/app/request/user";
 import { UserResponseType } from "@/app/types";
 import { useEffect, useState } from "react";
-import { Spinner } from "@/app/components";
+import { Spinner } from "@/components";
 
 const DetailUserPage = ({ params }: { params: { id: string } }) => {
   const [user, setUser] = useState<UserResponseType | null>(null);

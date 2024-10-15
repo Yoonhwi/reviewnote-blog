@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { PostCard, SearchPost } from "./components";
+import { PostCard, SearchPost } from "../components";
 import { BaseLayout } from "./layouts";
 import { PostResponseType } from "./types";
 import postRequest from "./request/post";

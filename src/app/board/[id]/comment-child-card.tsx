@@ -1,13 +1,13 @@
-import { _CommentType } from "@/app/types/comment";
-import { MdSubdirectoryArrowRight } from "react-icons/md";
-import Image from "next/image";
-import { formatISO } from "@/app/utils";
-import { useContext, useState } from "react";
-import { Button } from "@/components/ui/button";
-import ModifyCommentForm from "./modify-comment-form";
 import { UserContext } from "@/app/context/user-context";
 import commentRequest from "@/app/request/comment";
+import { _CommentType } from "@/app/types/comment";
+import { formatISO } from "@/app/utils";
+import { RoundImage } from "@/components";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useContext, useState } from "react";
+import { MdSubdirectoryArrowRight } from "react-icons/md";
+import ModifyCommentForm from "./modify-comment-form";
 
 interface CommentChildCardProps {
   comment: _CommentType;
@@ -28,14 +28,7 @@ const CommentChildCard = ({ comment, callback }: CommentChildCardProps) => {
         <MdSubdirectoryArrowRight />
       </i>
       <div className="flex gap-4 flex-1">
-        <Image
-          src={comment.user.profile}
-          width={54}
-          height={54}
-          alt="user_img"
-          className="rounded-full w-[54px] h-[54px]"
-          priority
-        />
+        <RoundImage imgSrc={comment.user.profile} size={54} alt="user_img" />
 
         <div className="flex flex-col gap-4 flex-1">
           <div className="flex gap-6 justify-between">

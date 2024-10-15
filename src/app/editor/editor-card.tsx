@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormErrorMessage } from "../components";
+import { FormErrorMessage } from "../../components";
 import { PageRoutes } from "../constants/routes";
 import postRequest from "../request/post";
 import { toUrl } from "../request/utils";

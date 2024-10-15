@@ -1,15 +1,15 @@
-import { formatISO } from "@/app/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
-import DetailPostComments from "./detail-post.comments";
-import { useRouter } from "next/navigation";
-import { toUrl } from "@/app/request/utils";
 import { PageRoutes } from "@/app/constants/routes";
-import { PostResponseType } from "@/app/types";
-import { Button } from "@/components/ui/button";
-import { useContext } from "react";
 import { UserContext } from "@/app/context/user-context";
 import postRequest from "@/app/request/post";
+import { toUrl } from "@/app/request/utils";
+import { PostResponseType } from "@/app/types";
+import { formatISO } from "@/app/utils";
+import { RoundImage } from "@/components";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import DetailPostComments from "./detail-post.comments";
 
 interface DetailPostCardProps {
   post: PostResponseType;
@@ -66,19 +66,17 @@ const DetailPostCard = ({ post }: DetailPostCardProps) => {
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-8 py-4 items-center lg:items-start">
           <div className="flex flex-col gap-4 w-1/5 items-center">
-            <Image
-              width={120}
-              height={120}
+            <RoundImage
+              size={120}
               alt="user_img"
-              src={post.user.profile}
-              className="rounded-full w-full hover:shadow-md transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
+              imgSrc={post.user.profile}
               onClick={() => {
                 router.push(
                   toUrl(PageRoutes.UserDetail, { id: String(post.user.id) }),
                   { scroll: false }
                 );
               }}
-              priority
+              className="hover:shadow-md transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
             />
             <span>{post.user.nickname} 님의 게시글</span>
           </div>

@@ -1,4 +1,4 @@
-import { Pagination } from "@/app/components";
+import { Pagination } from "@/components";
 import commentRequest, { CommentAdd } from "@/app/request/comment";
 import { CommentType } from "@/app/types/comment";
 import { Button } from "@/components/ui/button";

@@ -19,7 +19,7 @@ import postRequest from "@/app/request/post";
 import { toUrl } from "@/app/request/utils";
 import { PageRoutes } from "@/app/constants/routes";
 import QuillEditor from "@/app/editor/editor-quill";
-import { FormErrorMessage } from "@/app/components";
+import { FormErrorMessage } from "@/components";
 import { BaseLayout } from "@/app/layouts";
 import { useToast } from "@/hooks/use-toast";
 

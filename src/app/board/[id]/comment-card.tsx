@@ -2,9 +2,9 @@ import { UserContext } from "@/app/context/user-context";
 import commentRequest from "@/app/request/comment";
 import { CommentType } from "@/app/types/comment";
 import { formatISO } from "@/app/utils";
+import { RoundImage } from "@/components";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import CommentChildCard from "./comment-child-card";
 import ModifyCommentForm from "./modify-comment-form";
@@ -33,15 +33,7 @@ const CommentCard = ({ comment, postId, callback }: CommentCardProps) => {
   return (
     <>
       <div className="flex gap-4 p-4 border-b-2 border-stone-100">
-        <Image
-          src={comment.user.profile}
-          width={54}
-          height={54}
-          alt="user_img"
-          className="rounded-full w-[54px] h-[54px]"
-          priority
-        />
-
+        <RoundImage imgSrc={comment.user.profile} size={54} alt="user_img" />
         <div className="flex flex-col gap-4 flex-1">
           <div className="flex gap-6 justify-between">
             <div className="flex gap-6 items-center">
