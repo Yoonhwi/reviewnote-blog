@@ -33,8 +33,8 @@ const SearchPage = () => {
   }, [query, currentPage, fetchSearchPosts]);
 
   return (
-    <BaseLayout>
-      <Suspense>
+    <Suspense fallback={<div>Loading ... </div>}>
+      <BaseLayout>
         <div className="flex flex-col gap-4 py-16 items-center">
           <SearchPost />
           <div className="w-full">
@@ -57,8 +57,8 @@ const SearchPage = () => {
             />
           </div>
         </div>
-      </Suspense>
-    </BaseLayout>
+      </BaseLayout>
+    </Suspense>
   );
 };
 
