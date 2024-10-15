@@ -1,4 +1,5 @@
 "use client";
+
 import { useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { Pagination, PostCard, SearchPost } from "../../components";
@@ -32,8 +33,8 @@ const SearchPage = () => {
   }, [query, currentPage, fetchSearchPosts]);
 
   return (
-    <Suspense>
-      <BaseLayout>
+    <BaseLayout>
+      <Suspense>
         <div className="flex flex-col gap-4 py-16 items-center">
           <SearchPost />
           <div className="w-full">
@@ -56,8 +57,8 @@ const SearchPage = () => {
             />
           </div>
         </div>
-      </BaseLayout>
-    </Suspense>
+      </Suspense>
+    </BaseLayout>
   );
 };
 
